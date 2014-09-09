@@ -3,9 +3,9 @@
 Plugin Name: UK tides - heights and times
 Plugin URI: http://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
 Description: shortcode for UK tide times and heights [bw_tides]
-Version: 1.3
+Version: 1.4
 Author: bobbingwide
-Author URI: http://www.bobbingwide.com
+Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
 
     Copyright 2011-2014 Bobbing Wide (email : herb@bobbingwide.com )
@@ -27,7 +27,7 @@ License: GPL2
 */
 
 /**
- * Implement "oik_loaded" action for UK tides 
+ * Implement "oik_add_shortcodes" action for UK tides 
  */
 function uk_tides_init() {
   bw_add_shortcode( 'bw_tides', 'bw_tides', oik_path( "shortcodes/uk-tides.php", "uk-tides"), false );
@@ -41,9 +41,11 @@ function uk_tides_activation() {
   if ( !$plugin_basename ) {
     $plugin_basename = plugin_basename(__FILE__);
     add_action( "after_plugin_row_uk-tides/uk-tides.php", "uk_tides_activation" );   
-    require_once( "admin/oik-activation.php" );
+    if ( !function_exists( "oik_plugin_lazy_activation" ) ) { 
+      require_once( "admin/oik-activation.php" );
+    }
   }  
-  $depends = "oik:2.1";
+  $depends = "oik:2.2";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 
@@ -51,7 +53,7 @@ function uk_tides_activation() {
  * Function to invoke when UK tides plugin is loaded
  */  
 function uk_tides_plugin_loaded() {
-  add_action( "oik_loaded", "uk_tides_init" );
+  add_action( "oik_add_shortcodes", "uk_tides_init" );
   add_action( "admin_notices", "uk_tides_activation" );
 }
 

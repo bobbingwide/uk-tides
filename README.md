@@ -1,12 +1,12 @@
 # uk-tides 
-Contributors: bobbingwide, vsgloik
-Donate link: http://www.oik-plugins.com/oik/oik-donate/
-Tags: shortcode, tides, UK, heights and times, [bw_tides], saltwater
-Requires at least: 3.5
-Tested up to: 3.8.1
-Stable tag: 1.2
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+* Contributors: bobbingwide, vsgloik
+* Donate link: http://www.oik-plugins.com/oik/oik-donate/
+* Tags: shortcode, tides, UK, heights and times, [bw_tides], saltwater
+* Requires at least: 3.9
+* Tested up to: 4.0
+* Stable tag: 1.4
+* License: GPLv2 or later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Tide heights and times for UK ports and harbours
 
@@ -28,7 +28,7 @@ Examples:
  [bw_tides store=bw_tides_pompey tideurl="http://www.tidetimes.org.uk/portsmouth"] will display the tide times and heights obtained from
  http://www.tidetimes.org.uk/portsmouth-tide-times.rss and cache the result in a store named 'bw_tides_pompey'
 
- Note: Using the store parameter allows you to display tide time and height information for more than one location.
+*  Note: Using the store parameter allows you to display tide time and height information for more than one location.
 
 
 ## Installation 
@@ -36,7 +36,7 @@ Examples:
 1. Activate the uk-tides plugin through the 'Plugins' menu in WordPress
 1. Whenever you want to produce some 'uk-tides'ed text use the [uk-tides] shortcode.
 
-Note: uk-tides is dependent upon the oik plugin. You can activate it but it will not work unless oik is also activated.
+* Note: uk-tides is dependent upon the oik plugin. You can activate it but it will not work unless oik is also activated.
 Download oik from
 [oik download](http://wordpress.org/extend/plugins/oik/)
 
@@ -63,8 +63,11 @@ But you may find the output harder to (re)style.
 1. sample output for Portsmouth, Hants
 
 ## Upgrade Notice 
+# 1.4 
+Now dependent upon oik v2.2 or higher. Tested with WordPress 4.0
+
 # 1.3 
-Now dependent upon oik v2.1 or higher
+Now dependent upon oik v2.1 or higher. Tested with WordPress 3.9
 
 # 1.2 
 Still dependent upon oik v1.17 or higher
@@ -73,6 +76,10 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 1.4 
+* Changed: Now dependent upon oik v2.2 or higher
+* Tested: With WordPress 4.0 and WordPress Multi Site
+
 # 1.3 
 * Tested: With WordPress 3.8.1
 * Changed: Plugin dependency checking
