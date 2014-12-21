@@ -29,26 +29,28 @@
   *
   * Note There is no error checking here. It can fail for many reasons but it will produce messages when it happens. 
   * The most likely causes of failure are:
+  * 
   * - $tide_url is not a valid RSS feed - see bw_tideurl_namify()
   * - server is not connected to the internet 
   * - http://www.tidetimes.org.uk is not responding
+  * - http://www.tidetimes.co.uk is not responding
   * 
   * @param string $tide_url - the RSS feed for the desired location
   * @return string - the response XML
   */
 function bw_get_tide_info( $tide_url ) {
-  $request_url = urlencode($tide_url);
-  $response_xml = simplexml_load_file($request_url);
+  $request_url = urlencode( $tide_url );
+  $response_xml = simplexml_load_file( $request_url );
   bw_trace( $response_xml, __FUNCTION__, __LINE__, __FILE__, "response_xml" );
   return $response_xml;
 }
 
 /**
  * Obtain tide information using the shortcode [bw_tides tide_url='tide feed xml url']
- * The format of the feed is expected to be as in the following output from bw_trace
+ * The format of the feed from tidetimes.org.uk is expected to be as in the following output from bw_trace
  
  
-
+`
 C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(45:0) 2011-04-29T12:11:51+00:00 bw_get_tide_info  response_xml SimpleXMLElement Object
 (
     [@attributes] => Array
@@ -75,10 +77,11 @@ C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(45:0) 2011-04-29
         )
 
 )
+`
 
 as of 4th May 2011 the tideinfo->channel->item->description appeared to have additional Google Ad stuff
 
-
+`
 C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(45:0) 2011-05-04T03:17:51+00:00 bw_get_tide_info  response_xml SimpleXMLElement Object
 (
     [@attributes] => Array
@@ -105,8 +108,11 @@ C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(45:0) 2011-05-04
         )
 
 )
+`
 
 from 28th October 2011 (first noticed) it changed again. The description was already formatted.
+
+`
 C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(44:0) 2011-10-29T16:49:09+00:00 54 bw_get_tide_info response_xml SimpleXMLElement Object
 (
     [@attributes] => Array
@@ -133,10 +139,72 @@ C:\apache\htdocs\wordpress\wp-content\plugins\oik\oik-tides.php(44:0) 2011-10-29
         )
 
 )
-
+`
 from Feb 2012 - I've been reliably informed that the tide_url should be hyphenated and end with -tide-times.rss
 so it should be easy to construct a valid tide url if we want to
+
  
+Latest version
+`
+bw_get_tide_info(2) response_xml SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [version] => 2.0
+        )
+
+    [channel] => SimpleXMLElement Object
+        (
+            [title] => Portsmouth Tide Times
+            [link] => http://www.tidetimes.org.uk/portsmouth-tide-times
+            [description] => Portsmouth tide times.
+            [lastBuildDate] => Thu, 18 Dec 2014 00:00:00 GMT
+            [language] => en-gb
+            [item] => SimpleXMLElement Object
+                (
+                    [title] => Portsmouth Tide Times for 18th December 2014
+                    [link] => http://www.tidetimes.org.uk/portsmouth-tide-times
+                    [guid] => http://www.tidetimes.org.uk/portsmouth-tide-times
+                    [pubDate] => Thu, 18 Dec 2014 00:00:00 GMT
+                    [description] => <a href="http://www.tidetimes.org.uk" title="Tide Times">Tide Times</a> & Heights for<br/><a href="http://www.tidetimes.org.uk/portsmouth-tide-times" title="Portsmouth tide times">Portsmouth</a> on 18th December 2014<br/><br/>01:06 - Low Tide (1.80m)<br/>08:25 - High Tide (4.20m)<br/>13:37 - Low Tide (1.70m)<br/>20:57 - High Tide (4.10m)<br/>
+                )
+
+        )
+
+)
+`
+
+
+The content of the feed from tidetimes.co.uk is expected to be in the following format
+`
+bw_get_tide_info(4) response_xml SimpleXMLElement Object
+(
+    [@attributes] => Array
+        (
+            [version] => 2.0
+        )
+
+    [channel] => SimpleXMLElement Object
+        (
+            [title] => Portsmouth Tide Times
+            [link] => http://www.tidetimes.co.uk/portsmouth-tide-times
+            [description] => Portsmouth tide times
+            [lastBuildDate] => Thu, 18 Dec 2014 00:00:00 +0000
+            [language] => en-gb
+            [item] => SimpleXMLElement Object
+                (
+                    [title] => Portsmouth Tide Times for Thursday, 18 December 2014
+                    [link] => http://www.tidetimes.co.uk/portsmouth-tide-times
+                    [guid] => http://www.tidetimes.co.uk/portsmouth-tide-times
+                    [pubDate] => Thu, 18 Dec 2014 00:00:00 +0000
+                    [description] => <a href="http://www.tidetimes.co.uk" title="Tide Times">Tide Times</a> & Heights for <a href="http://www.tidetimes.co.uk/portsmouth-tide-times" title="Portsmouth tide times">Portsmouth</a> on Thursday, 18 December 2014<br/>Low Tide: 01:06 (1.80m)<br/>High Tide: 08:25 (4.20m)<br/>Low Tide: 13:37 (1.70m)<br/>High Tide: 20:57 (4.10m)<br/>
+                )
+
+        )
+
+)
+`
+
 */
 
 /**
@@ -151,9 +219,18 @@ function bw_time_of_day_secs() {
   return( $secs );
 }  
 
-
 /**
  * Form an URL for the given location assuming UK based
+ *
+ * Cater for different hosts.
+ * 
+ * Starting with a $tideurl that is expected to contain `http://domain/port`
+ * we're trying to create something like this:
+ *
+ * domain | format
+ * ------ | -----------------------------------
+ * tidetimes.org.uk | domain/port-tide-times.rss
+ * tidetimes.co.uk  | domain/rss/port-tide-times
  * 
  * @param string $tideurl user input
  * @return string $newurl - URL to use for the RSS feed
@@ -163,10 +240,17 @@ function bw_tideurl_namify( $tideurl ) {
   $newurl = str_replace( "_", "-", $newurl );
   $newurl = str_replace( " ", "-", $newurl );
   $newurl = str_replace( ".rss", "", $newurl );
-  if ( 0 == strpos( $newurl, "-tide-times" ) )  { 
+  if ( false === strpos( $newurl, "-tide-times" ) )  { 
     $newurl .= "-tide-times";
-  }  
-  $newurl .= ".rss";
+  }
+  $dotorguk = false !== strpos( $newurl, ".org.uk" ); 
+  if ( $dotorguk ) { 
+    $newurl .= ".rss";
+  } else {
+    if ( false === strpos( $newurl, "/rss/" ) ) {
+      $newurl = str_replace( ".co.uk/", ".co.uk/rss/", $newurl );
+    }
+  }
   return $newurl;
 }
 
@@ -188,8 +272,8 @@ function bw_tideurl_namify( $tideurl ) {
 function bw_tides_format_desc( $desc ) {
   $descs = explode( "<br/>", $desc );
   bw_trace2( $descs, "descs array" );
-  foreach ( $descs as $stuff ) {
-    sdiv();
+  foreach ( $descs as $key => $stuff ) {
+    sdiv( "bw_tides_$key" );
     bw_tides_format_stuff( $stuff );
     ediv();
   }
@@ -197,13 +281,23 @@ function bw_tides_format_desc( $desc ) {
 
 /**
  * Reformat the content into a series of spans
+ * 
+ * Processing depends on the source ( tidetimes.org.uk or tidetimes.co.uk )
+ * We check the first character
+ *
+ * first char | Example | Means
+ * ---------- | ----------- | ------
+ * numeric    | 01:06 - Low Tide (1.80m) | time and height data from .org.uk e.g.
+ * L          | Low Tide: 01:06 (1.80m)  | Low tide from .co.uk
+ * H          | High Tide: 08:25 (4.20m) | High tide from .co.uk
+ * other      | | Anything else we don't split 
+ * 
  *
  * @param string $stuff - the next line to be reformatted
  */
 function bw_tides_format_stuff( $stuff ) {
   $ch = substr( $stuff, 0, 1 );
-  
-  if ( is_numeric( $ch ) ) {
+  if ( is_numeric( $ch ) || $ch == "L" || $ch == "H" ) {
     $stuff = str_replace( "(", "( ", $stuff );
     $stuff = str_replace( ")", " )", $stuff );
     $stuffs = explode( " ", $stuff );
@@ -217,17 +311,48 @@ function bw_tides_format_stuff( $stuff ) {
 }  
 
 /**
- * display information about high and low tides obtained from www.tidetimes.org.uk
- * the data is stored as transient data until midnight, after which we expect new figures for the next day
+ * Return a CSS class name for the given value
+ * 
+ * The default value for $store ( 1 ) is not a valid CSS class name
+ * We prefix "bw" to any store value which doesn't start with an alpha character
+ * Currently we don't care about the rest
+ *
+ * http://stackoverflow.com/questions/448981/what-characters-are-valid-in-css-class-selectors
+ * 
+ * @param string $value
+ * @return string - a CSS class name
+ *
+ */
+if ( !function_exists( "bw_get_css_classname" ) ) {
+function bw_get_css_classname( $value ) {
+  $css_class = $value;
+  $ch = substr( $css_class, 0, 1 );
+  if ( !ctype_alpha( $ch ) ) {
+    $css_class = "bw" . $css_class;
+  }
+  return( $css_class ); 
+}
+}
+
+/**
+ * Display information about high and low tides obtained from www.tidetimes.org.uk or www.tidetimes.co.uk
+ * 
+ * The data is stored as transient data until midnight, after which we expect new figures for the next day
  * If the site is going to display more than one set of tide information then you will need to indicate
  * a special code for storing the information. I would have liked to have extracted the location from the
  * tideurl but got distracted with set_transient crashing when passed a SimpleXML object.
+ *
+ * @param array $atts - shortcode parameters
+ * @param string $content - not expected
+ * @param string $tag - the shortcode
+ * @return string - the generated HTML
  */                                                                        
-function bw_tides( $atts=NULL ) {
+function bw_tides( $atts=null, $content=null, $tag=null ) {
 
   $tideurl = bw_array_get( $atts, "tideurl", "http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss" );
   $tideurl = bw_tideurl_namify( $tideurl ); 
-  $store = bw_array_get( $atts, "store", 1 );
+  $store = bw_array_get( $atts, "store", "1" );
+  $force = bw_array_get( $atts, "force", null );
       
   bw_trace( $tideurl, __FUNCTION__, __LINE__, __FILE__, 'tideurl' );
   bw_trace( $store, __FUNCTION__, __LINE__, __FILE__, 'store' ); 
@@ -236,7 +361,7 @@ function bw_tides( $atts=NULL ) {
   $title = get_transient( 'bw_tides_title_'. $store );      
   $link = get_transient( 'bw_tides_link_'. $store );
   
-  if ( $desc === FALSE || $title === FALSE || $link === FALSE  ) {
+  if ( $desc === FALSE || $title === FALSE || $link === FALSE || $force   ) {
     $tideinfo = bw_get_tide_info( $tideurl );
     
     if ( is_wp_error( $tideinfo ) || !$tideinfo->channel ) {
@@ -280,7 +405,8 @@ function bw_tides( $atts=NULL ) {
   // Now that tidetimes.org.uk creates the links itself we only need to display the informaton in span
   // with class tides, to allow for custom CSS styling
   //alink( "tides", $link , $desc , $title ); 
-  span( "bw_tides" );
+  $css_class = bw_get_css_classname( $store );
+  span( "bw_tides $css_class" );
   bw_tides_format_desc( $desc ); 
   epan( "bw_tides" );
   return( bw_ret());
@@ -293,18 +419,21 @@ function bw_tides__help( $shortcode='bw_tides' ) {
 function bw_tides__syntax( $shortcode='bw_tides' ) {
   $syntax = array( "tideurl" => bw_skv( "http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss", "other", "RSS feed URL for location" )
                  , "store" => bw_skv( "1", "store key", "unique key for caching result" )
+                 , "force" => bw_skv( null, "true", "force loading from the feed" )
                  );
   return( $syntax );
 }           
 
 function bw_tides__example( $shortcode='bw_tides' ) {    
   p( "Display tide times and heights for a particular location in the UK. " );
-
   $atts = array( "store" => "bw_tides_pompey1"
                , "tideurl" => "http://www.tidetimes.org.uk/portsmouth" );  
   e( bw_tides( $atts ) );
-     
-  $link = retlink( NULL, "http://www.tidetimes.org.uk", "Tide Times" );
+  $link = retlink( NULL, "http://www.tidetimes.org.uk", "Tide Times .org.uk" );
   p( "The information displayed comes from $link" );
-
+  $atts = array( "store" => "bw_tides_pompey2"
+               , "tideurl" => "http://www.tidetimes.co.uk/rss/portsmouth" );  
+  e( bw_tides( $atts ) );
+  $link = retlink( NULL, "http://www.tidetimes.co.uk", "Tide Times .co.uk" );
+  p( "The information displayed comes from $link" );
 }

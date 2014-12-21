@@ -3,15 +3,18 @@
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, tides, UK, heights and times, [bw_tides], saltwater
 * Requires at least: 3.9
-* Tested up to: 4.0
-* Stable tag: 1.4
+* Tested up to: 4.1
+* Stable tag: 1.6
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Tide heights and times for UK ports and harbours
 
 ## Description 
-uk-tides displays tide times and heights for a particular location in the UK. The information that is displayed is obtained from the RSS feed for tidetimes.org.uk (e.g. http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss ). The data is cached until midnight. This plugin implements a lazy smart shortcode using the API provided by the oik plugin.
+uk-tides displays tide times and heights for a particular location in the UK.
+The information that is displayed is obtained from the RSS feed for tidetimes.org.uk (e.g. http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss )
+or tidetimes.co.uk ( e.g http://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times ).
+The data is cached until midnight. This plugin implements a lazy smart shortcode using the API provided by the oik plugin.
 
 You implement this on your website using the [bw_tides] shortcode.
 
@@ -30,6 +33,11 @@ Examples:
 
 *  Note: Using the store parameter allows you to display tide time and height information for more than one location.
 
+Examples:
+ If you prefer you can use tidetimes.co.uk as the source for tidal information.
+
+ [bw_tides tideurl="http://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times"]
+
 
 ## Installation 
 1. Upload the contents of the uk-tides plugin to the `/wp-content/plugins/uk-tides' directory
@@ -42,14 +50,26 @@ Download oik from
 
 ## Frequently Asked Questions 
 # How do I find the value for tideurl? 
-Visit www.tidetimes.org.uk, click on the location of your choice, click on the RSS feed icon, copy the URL from the feed
+
+* Visit www.tidetimes.org.uk,
+* click on the location of your choice,
+* click on the RSS feed icon,
+* copy the URL from the feed
+
 e.g. for Brighton Marina the value for tideurl is http://www.tidetimes.org.uk/brighton-marina-tide-times.rss
+
+OR
+* Visit www.tidetimes.co.uk,
+* click on the location of your choice,
+* click on the RSS feed icon,
+* copy the URL from the feed
+
 
 # Doesn't [bw_tides] already exist in oik? 
 Not anymore. It was disabled in oik version 1.11
 
 # What if I don't live in the UK? 
-uk-tides currently only works for the UK since the information is obtained from http://www.tidetimes.org.uk
+uk-tides currently only works for the UK and Ireland since the information is obtained from http://www.tidetimes.org.uk
 If you can point us to a resource for other locations then it should be possible to develop a very similar solution.
 
 For saltwater tide times and heights for the US see [US-tides WordPress plugin](http://www.oik-plugins.com/oik-plugins/us-tides)
@@ -60,9 +80,16 @@ But you may find the output harder to (re)style.
 
 
 ## Screenshots 
-1. sample output for Portsmouth, Hants
+1. sample output for Portsmouth, Hants - from tidetimes.org.uk
+2. sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
+# 1.6 
+Improved support for styling with CSS
+
+# 1.5 
+Now works with tidetimes.co.uk. Now dependent upon oik v2.3 or higher.
+
 # 1.4 
 Now dependent upon oik v2.2 or higher. Tested with WordPress 4.0
 
@@ -76,6 +103,17 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 1.6 
+* Added: force=true parameter to force data refresh
+* Changed: Improved support for styling with CSS
+* Changed: better support for tidetimes.co.uk feed
+* Changed: store= parameter now also used as a CSS class for the outer span
+* Tested: With WordPress 4.1 and WordPress Multi Site
+
+# 1.5 
+* Changed: Added initial support for tidetimes.co.uk - slightly different output
+* Tested: With WordPress 4.1-beta2 and WordPress Multi Site
+
 # 1.4 
 * Changed: Now dependent upon oik v2.2 or higher
 * Tested: With WordPress 4.0 and WordPress Multi Site
