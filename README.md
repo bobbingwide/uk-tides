@@ -3,8 +3,8 @@
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, tides, UK, heights and times, [bw_tides], saltwater
 * Requires at least: 3.9
-* Tested up to: 4.1
-* Stable tag: 1.6
+* Tested up to: 4.4
+* Stable tag: 1.6.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,7 @@ Download oik from
 e.g. for Brighton Marina the value for tideurl is http://www.tidetimes.org.uk/brighton-marina-tide-times.rss
 
 OR
+
 * Visit www.tidetimes.co.uk,
 * click on the location of your choice,
 * click on the RSS feed icon,
@@ -84,6 +85,9 @@ But you may find the output harder to (re)style.
 2. sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
+# 1.6.1 
+Tested with WordPress 4.4. Now dependent upon oik v2.5 or higher.
+
 # 1.6 
 Improved support for styling with CSS
 
@@ -103,6 +107,11 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 1.6.1 
+* Changed: Updated oik-activation logic
+* Changed: Now dependent upon oik v2.5 or higher
+* Tested: With WordPress 4.4
+
 # 1.6 
 * Added: force=true parameter to force data refresh
 * Changed: Improved support for styling with CSS

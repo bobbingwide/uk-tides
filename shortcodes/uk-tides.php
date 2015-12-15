@@ -1,7 +1,7 @@
 <?php 
 /*
 
-    Copyright 2011 - 2014 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2011 - 2015 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -21,23 +21,23 @@
 
 
 /** 
-  * Get tide information from the $tide_url 
-  * 
-  * Code copied and cobbled from http://snippet.me/wordpress/wordpress-plugin-info-api/
-  * having referred to http://ckon.wordpress.com/2010/07/20/undocumented-wordpress-org-plugin-api/
-  * get XML information using simple xml load file
-  *
-  * Note There is no error checking here. It can fail for many reasons but it will produce messages when it happens. 
-  * The most likely causes of failure are:
-  * 
-  * - $tide_url is not a valid RSS feed - see bw_tideurl_namify()
-  * - server is not connected to the internet 
-  * - http://www.tidetimes.org.uk is not responding
-  * - http://www.tidetimes.co.uk is not responding
-  * 
-  * @param string $tide_url - the RSS feed for the desired location
-  * @return string - the response XML
-  */
+ * Get tide information from the $tide_url 
+ * 
+ * Code copied and cobbled from http://snippet.me/wordpress/wordpress-plugin-info-api/
+ * having referred to http://ckon.wordpress.com/2010/07/20/undocumented-wordpress-org-plugin-api/
+ * get XML information using simple xml load file
+ *
+ * Note There is no error checking here. It can fail for many reasons but it will produce messages when it happens. 
+ * The most likely causes of failure are:
+ * 
+ * - $tide_url is not a valid RSS feed - see bw_tideurl_namify()
+ * - server is not connected to the internet 
+ * - http://www.tidetimes.org.uk is not responding
+ * - http://www.tidetimes.co.uk is not responding
+ * 
+ * @param string $tide_url - the RSS feed for the desired location
+ * @return string - the response XML
+ */
 function bw_get_tide_info( $tide_url ) {
   $request_url = urlencode( $tide_url );
   $response_xml = simplexml_load_file( $request_url );
@@ -255,9 +255,11 @@ function bw_tideurl_namify( $tideurl ) {
 }
 
 /**
+ * Format the description
+ * 
  * The string returned from tidetimes.org IS OK but it's not easy to style the output
  * SO we'll change the <br/>s to <div>s and wrap the other stuff in spans
-                 
+ * `                
    <a href="http://www.tidetimes.org.uk" title="Tide Times">Tide Times</a>& Heights for
    <br/>
    <a href="http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times" title="Chichester Harbour (Entrance) tide times">Chichester Harbour (Entrance)</a> on 29th October 2011
@@ -267,7 +269,7 @@ function bw_tideurl_namify( $tideurl ) {
    <br/>13:38 - High Tide (5.00m)
    <br/>19:03 - Low Tide (0.70m)
    <br/>
-
+	 `
  */
 function bw_tides_format_desc( $desc ) {
   $descs = explode( "<br/>", $desc );
@@ -285,12 +287,12 @@ function bw_tides_format_desc( $desc ) {
  * Processing depends on the source ( tidetimes.org.uk or tidetimes.co.uk )
  * We check the first character
  *
- * first char | Example | Means
- * ---------- | ----------- | ------
- * numeric    | 01:06 - Low Tide (1.80m) | time and height data from .org.uk e.g.
+ * first char | Example                  | Means
+ * ---------- | ------------------------ | ------
+ * numeric    | 01:06 - Low Tide (1.80m) | time and height data from .org.uk 
  * L          | Low Tide: 01:06 (1.80m)  | Low tide from .co.uk
  * H          | High Tide: 08:25 (4.20m) | High tide from .co.uk
- * other      | | Anything else we don't split 
+ * other      |                          | Anything else we don't split 
  * 
  *
  * @param string $stuff - the next line to be reformatted
@@ -335,9 +337,11 @@ function bw_get_css_classname( $value ) {
 }
 
 /**
+ * Implement [bw_tides] shortcode for UK-tides
+ *
  * Display information about high and low tides obtained from www.tidetimes.org.uk or www.tidetimes.co.uk
  * 
- * The data is stored as transient data until midnight, after which we expect new figures for the next day
+ * The data is stored as transient data until midnight, after which we expect new figures for the next day.
  * If the site is going to display more than one set of tide information then you will need to indicate
  * a special code for storing the information. I would have liked to have extracted the location from the
  * tideurl but got distracted with set_transient crashing when passed a SimpleXML object.
