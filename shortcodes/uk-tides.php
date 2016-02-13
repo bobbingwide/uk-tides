@@ -1,7 +1,7 @@
 <?php 
 /*
 
-    Copyright 2011 - 2015 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2011 - 2016 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -41,7 +41,7 @@
 function bw_get_tide_info( $tide_url ) {
   $request_url = urlencode( $tide_url );
   $response_xml = simplexml_load_file( $request_url );
-  bw_trace( $response_xml, __FUNCTION__, __LINE__, __FILE__, "response_xml" );
+	bw_trace2( (string) $response_xml, "response_xml", true, BW_TRACE_DEBUG );
   return $response_xml;
 }
 
@@ -215,7 +215,7 @@ bw_get_tide_info(4) response_xml SimpleXMLElement Object
 function bw_time_of_day_secs() {
   extract( localtime( time(), true ));
   $secs = ((($tm_hour * 60) + $tm_min) * 60) + $tm_sec;
-  bw_trace( $secs, __FUNCTION__, __LINE__, __FILE__, 'secs' );
+  bw_trace2( $secs, 'secs', false, BW_TRACE_DEBUG );
   return( $secs );
 }  
 
@@ -270,10 +270,12 @@ function bw_tideurl_namify( $tideurl ) {
    <br/>19:03 - Low Tide (0.70m)
    <br/>
 	 `
+ *
+ * @param string $desc description
  */
 function bw_tides_format_desc( $desc ) {
   $descs = explode( "<br/>", $desc );
-  bw_trace2( $descs, "descs array" );
+  bw_trace2( $descs, "descs array", false, BW_TRACE_DEBUG );
   foreach ( $descs as $key => $stuff ) {
     sdiv( "bw_tides_$key" );
     bw_tides_format_stuff( $stuff );
@@ -358,8 +360,8 @@ function bw_tides( $atts=null, $content=null, $tag=null ) {
   $store = bw_array_get( $atts, "store", "1" );
   $force = bw_array_get( $atts, "force", null );
       
-  bw_trace( $tideurl, __FUNCTION__, __LINE__, __FILE__, 'tideurl' );
-  bw_trace( $store, __FUNCTION__, __LINE__, __FILE__, 'store' ); 
+  bw_trace2( $tideurl, 'tideurl', true, BW_TRACE_DEBUG );
+  bw_trace2( $store, 'store', false, BW_TRACE_VERBOSE ); 
   
   $desc = get_transient( 'bw_tides_desc_'. $store );
   $title = get_transient( 'bw_tides_title_'. $store );      
@@ -373,13 +375,13 @@ function bw_tides( $atts=null, $content=null, $tag=null ) {
     } else { 
     
       $channel = $tideinfo->channel;    
-      bw_trace( $channel, __FUNCTION__, __LINE__, __FILE__, 'channel');
+      bw_trace2( (string) $channel, 'channel', false, BW_TRACE_DEBUG );
       $link = (string) $channel->link;   
 
       /* cast to a string since otherwise there can be a problem with attempting to serialise a simpleXML element */
       $desc = (string) $channel->item->description;
       
-      bw_trace( $desc, __FUNCTION__, __LINE__, __FILE__, 'desc');
+      bw_trace2( $desc, 'desc', false, BW_TRACE_DEBUG );
       /* We may need to strip some unwanted advertising which appears in an anchor tag <a */
       /*
       $desc = preg_replace('/<a (.*?)<\/a>/', "\\2", $desc);
@@ -402,9 +404,9 @@ function bw_tides( $atts=null, $content=null, $tag=null ) {
      // We got all the data from the transient store     
   }  
 
-  bw_trace( $desc, __FUNCTION__, __LINE__, __FILE__, 'desc');
-  bw_trace( $title, __FUNCTION__, __LINE__, __FILE__, 'title');
-  bw_trace( $link, __FUNCTION__, __LINE__, __FILE__, 'link');
+  bw_trace2( $desc, 'desc', false, BW_TRACE_DEBUG );
+  bw_trace2( $title, 'title', false, BW_TRACE_DEBUG );
+  bw_trace2( $link, 'link', false, BW_TRACE_DEBUG );
 
   // Now that tidetimes.org.uk creates the links itself we only need to display the informaton in span
   // with class tides, to allow for custom CSS styling
