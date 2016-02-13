@@ -111,7 +111,7 @@ Now dependent upon oik v1.17 or higher
 
 ## Changelog 
 # 1.6.2 
-* Fixed: Uncaug exception 'Serialization of 'SimpleXMLElement' when tracing	GitHub Issue 1
+* Fixed: Uncaught exception 'Serialization of 'SimpleXMLElement' when tracing	GitHub Issue 1
 
 # 1.6.1 
 * Changed: Updated oik-activation logic
