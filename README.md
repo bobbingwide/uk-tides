@@ -1,10 +1,11 @@
 # uk-tides 
+![banner](https://raw.githubusercontent.com/bobbingwide/uk-tides/master/assets/uk-tides-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: http://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, tides, UK, heights and times, [bw_tides], saltwater
 * Requires at least: 3.9
-* Tested up to: 4.4.2
-* Stable tag: 1.6.2
+* Tested up to: 4.6.1
+* Stable tag: 1.6.3
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +86,9 @@ But you may find the output harder to (re)style.
 2. sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
+# 1.6.3 
+Tested with WordPress 4.6.1. Should not crash if oik is not active processing 'oik_add_shortcodes'
+
 # 1.6.2 
 Tested with WordPress 4.4.2. Should not crash when tracing is active.
 
@@ -110,6 +114,11 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 1.6.3 
+* Fixed: Avoid Fatal errors when oik not activated processing 'oik_add_shortcodes' action [github bobbingwide uk-tides issue 2]
+* Tested: With WordPress 4.6.1
+* Tested: Compatability with oik up to 3.0.3
+
 # 1.6.2 
 * Fixed: Uncaught exception 'Serialization of 'SimpleXMLElement' when tracing	GitHub Issue 1
 
