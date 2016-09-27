@@ -3,7 +3,7 @@
 Plugin Name: UK tides - heights and times
 Plugin URI: http://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
 Description: shortcode for UK tide times and heights [bw_tides]
-Version: 1.6.2
+Version: 1.6.3
 Author: bobbingwide
 Author URI: http://www.oik-plugins.com/author/bobbingwide
 License: GPL2
@@ -35,7 +35,9 @@ uk_tides_plugin_loaded();
  * The code for the shortcode is not loaded until actually required.
  */
 function uk_tides_init() {
-  bw_add_shortcode( 'bw_tides', 'bw_tides', oik_path( "shortcodes/uk-tides.php", "uk-tides"), false );
+	if ( function_exists( "bw_add_shortcode" ) ) {
+		bw_add_shortcode( 'bw_tides', 'bw_tides', oik_path( "shortcodes/uk-tides.php", "uk-tides"), false );
+	}
 }
 
 /**
