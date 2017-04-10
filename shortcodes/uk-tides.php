@@ -1,7 +1,7 @@
 <?php 
 /*
 
-    Copyright 2011 - 2016 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2011 - 2017 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -21,11 +21,8 @@
 
 
 /** 
- * Get tide information from the $tide_url 
+ * Gets tide information from the $tide_url 
  * 
- * Code copied and cobbled from http://snippet.me/wordpress/wordpress-plugin-info-api/
- * having referred to http://ckon.wordpress.com/2010/07/20/undocumented-wordpress-org-plugin-api/
- * get XML information using simple xml load file
  *
  * Note There is no error checking here. It can fail for many reasons but it will produce messages when it happens. 
  * The most likely causes of failure are:
@@ -261,7 +258,6 @@ function bw_tideurl_namify( $tideurl ) {
  * SO we'll change the <br/>s to <div>s and wrap the other stuff in spans
  * `                
    <a href="http://www.tidetimes.org.uk" title="Tide Times">Tide Times</a>& Heights for
-   <br/>
    <a href="http://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times" title="Chichester Harbour (Entrance) tide times">Chichester Harbour (Entrance)</a> on 29th October 2011
    <br/>
    <br/>01:18 - High Tide (5.00m)
@@ -269,6 +265,18 @@ function bw_tideurl_namify( $tideurl ) {
    <br/>13:38 - High Tide (5.00m)
    <br/>19:03 - Low Tide (0.70m)
    <br/>
+	 
+	 `
+	 
+	 
+	 `
+	 <a href="http://www.tidetimes.co.uk" title="Tide Times">Tide Times</a> &amp; Heights for 
+	 <a href="http://www.tidetimes.co.uk/portsmouth-tide-times" title="Portsmouth tide times">Portsmouth</a> on Thursday, 06 April 2017
+	 <br/>Low Tide: 01:32 (1.80m)
+	 <br/>High Tide: 08:29 (4.00m)
+	 <br/>Low Tide: 14:03 (1.50m)
+	 <br/>High Tide: 21:13 (4.10m)
+	 <br/>
 	 `
  *
  * @param string $desc description
@@ -286,14 +294,15 @@ function bw_tides_format_desc( $desc ) {
 /**
  * Reformat the content into a series of spans
  * 
- * Processing depends on the source ( tidetimes.org.uk or tidetimes.co.uk )
- * We check the first character
+ * - Processing depends on the source ( tidetimes.org.uk or tidetimes.co.uk )
+ * - We check the first character.
  *
  * first char | Example                  | Means
- * ---------- | ------------------------ | ------
+ * ---------- | ------------------------ | -------------------------------
  * numeric    | 01:06 - Low Tide (1.80m) | time and height data from .org.uk 
  * L          | Low Tide: 01:06 (1.80m)  | Low tide from .co.uk
  * H          | High Tide: 08:25 (4.20m) | High tide from .co.uk
+ * <          | <a ...>lt1</a> plt1      | See bw_tides_format_links()
  * other      |                          | Anything else we don't split 
  * 
  *
@@ -309,10 +318,36 @@ function bw_tides_format_stuff( $stuff ) {
       sepan( "bw_tides_$key", $sp );
       e( " " );
     }
-  } else {
+	} elseif ( $ch == "<" ) {
+		bw_tides_format_links( $stuff );
+	} else {
     e( $stuff ); 
   }
-}  
+}
+  
+/**
+ * Reformats the links line
+ *
+ * Puts some spans in the parts of the text which aren't inside anchor tags.
+ * e.g.
+ * ` 
+ * <a ...>lt1</a> plt1 <a ...>lt2</a> plt2
+ * `
+ * becomes
+ * ` 
+ * <a ...>lt1</a><span> plt1 </span><a ...>lt2</a><span> plt2</span>
+ * `
+ * 
+ * This allows each span to be styled.
+ * 
+ * @param string $stuff
+ */
+function bw_tides_format_links( $stuff ) {
+	$stuff = str_replace( "> ", "><span> ", $stuff );
+	$stuff = str_replace( " <", " </span><", $stuff );
+	$stuff .= "</span>";
+	e( $stuff );
+}
 
 /**
  * Return a CSS class name for the given value

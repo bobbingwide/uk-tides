@@ -7,22 +7,34 @@
  */
 class Tests_uk_tides extends BW_UnitTestCase {
 
-	//function setUp() {
-		///parent::setUp();
-		//oik_require( "includes/oik-filters.inc" );
-	//}
+	function setUp() {
+		parent::setUp();
+		oik_require( "shortcodes/uk-tides.php", "uk-tides" );
+	}
 	
+	/**
+	 * Creates stream context
+	 *
+	 * If running Apache locally and you don't have cacert.pem correctly configured
+	 * one way of avoiding a variety of Warnings from simplexml_load_file() or file_get_contents() 
+	 * is to create a stream context resource that disables SSL verification.
+	 */
 	function stream_context() {
 		$arrContextOptions = array( "ssl" => array ( "verify_peer" => false, "verify_peer_name" => false ) );
 		$context = stream_context_create( $arrContextOptions ); 
     return $context;
   }
 	
+	/**
+	 * Tests that simplexml_load_file actually works
+	 */
 	function test_simplexml_load_file() {
 		$url = "https://tidetimes.co.uk/rss/portsmouth-tide-times";
 		$request_url = urlencode( $url );
 		$response = simplexml_load_file( $url );
-		print_r( $response );
+		//print_r( $response );
+		$this->assertInstanceOf( SimpleXMLElement::class, $response );
+		
 	}
 	
 	
@@ -43,6 +55,30 @@ class Tests_uk_tides extends BW_UnitTestCase {
 		$expected = "<rss version";
 		$this->assertContains( $expected, $file );
 	}
+	
+	/**
+	 * 01:18 - High Tide (5.00m)
+	 */
+	
+	function test_bw_tides_format_stuff() {
+		$input = "01:18 - High Tide (5.00m)"; 
+		bw_tides_format_stuff( $input );
+		$output = bw_ret();
+		$expected_output = '<span class="bw_tides_0">01:18</span> <span class="bw_tides_1">-</span> <span class="bw_tides_2">High</span> <span class="bw_tides_3">Tide</span> <span class="bw_tides_4">(</span> <span class="bw_tides_5">5.00m</span> <span class="bw_tides_6">)</span> ';
+		$this->assertEquals( $expected_output, $output );
+	
+	}
+	
+	function test_bw_tides_format_stuff_div_0() {
+		$input = '<a href="http://www.tidetimes.co.uk" title="Tide Times">Tide Times</a> &amp; Heights for ';
+		$input .= '<a href="http://www.tidetimes.co.uk/portsmouth-tide-times" title="Portsmouth tide times">Portsmouth</a> on Thursday, 06 April 2017';
+		bw_tides_format_stuff( $input );
+		$output = bw_ret();
+		$expected_output = '<a href="http://www.tidetimes.co.uk" title="Tide Times">Tide Times</a><span> &amp; Heights for ';
+		$expected_output .= '</span><a href="http://www.tidetimes.co.uk/portsmouth-tide-times" title="Portsmouth tide times">Portsmouth</a><span> on Thursday, 06 April 2017</span>';
+		$this->assertEquals( $expected_output, $output );
+	}
+	
 	
 }
 	
