@@ -24,20 +24,30 @@
  * Gets tide information from the $tide_url 
  * 
  *
- * Note There is no error checking here. It can fail for many reasons but it will produce messages when it happens. 
+ * Note: There is limited error checking here.
+ * It can fail for many reasons but it will produce messages when it happens.
+ * These are suppressed by the @ but can be logged by error handlers
  * The most likely causes of failure are:
  * 
  * - $tide_url is not a valid RSS feed - see bw_tideurl_namify()
  * - server is not connected to the internet 
- * - http://www.tidetimes.org.uk is not responding
- * - http://www.tidetimes.co.uk is not responding
+ * - https://www.tidetimes.org.uk is not responding
+ * - https://www.tidetimes.co.uk is not responding
  * 
  * @param string $tide_url - the RSS feed for the desired location
- * @return string - the response XML
+ * @return string | null - the response XML
  */
 function bw_get_tide_info( $tide_url ) {
-  $request_url = urlencode( $tide_url );
-  $response_xml = simplexml_load_file( $request_url );
+  //$request_url = urlencode( $tide_url );
+	$request_url = $tide_url;
+	$response = @file_get_contents( $request_url, false );
+  bw_trace2( $response, "response" );
+  if ( false === $response ){
+  	$response_xml = null;
+  } else {
+	$response_xml = simplexml_load_string( $response );
+  }
+  //$response_xml = simplexml_load_file( $request_url );
 	bw_trace2( (string) $response_xml, "response_xml", true, BW_TRACE_DEBUG );
   return $response_xml;
 }
@@ -405,7 +415,7 @@ function bw_tides( $atts=null, $content=null, $tag=null ) {
   if ( $desc === FALSE || $title === FALSE || $link === FALSE || $force   ) {
     $tideinfo = bw_get_tide_info( $tideurl );
     
-    if ( is_wp_error( $tideinfo ) || !$tideinfo->channel ) {
+    if ( is_wp_error( $tideinfo ) || !$tideinfo ||  !$tideinfo->channel ) {
       p( "Tide times and heights not available for $tideurl" );
     } else { 
     

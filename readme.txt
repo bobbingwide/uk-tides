@@ -2,11 +2,12 @@
 Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcode, tides, UK, heights, times
-Requires at least: 3.9
-Tested up to: 4.7.3
-Stable tag: 1.6.4
+Requires at least: 4.9.8
+Tested up to: 5.0
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Gutenberg compatible: Likely Yes
 
 Tide heights and times for UK ports and harbours
 
@@ -92,6 +93,9 @@ If you want to read more about the oik plugins then please visit the
 2. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 == Upgrade Notice ==
+= 1.6.5 =
+Upgrade for peaceful coexistence with Gutenberg / WordPress 5.0. Now depends on oik v3.2.8
+
 = 1.6.4 = 
 Tested with WordPress 4.7.3. Tested with PHP 7.1
 
@@ -123,6 +127,13 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 1.6.5 =
+* Changed: Now dependent upon oik v3.2.8, [github bobbingwide uk-tides issues 5]
+* Fixed: Reduced display of PHP Warnings for invalid tideurl parameter, [github bobbingwide uk-tides issue 5] 
+* Tested: With WordPress 5.0.1
+* Tested: With Gutenberg 4.7.0
+* Tested: With PHP 7.2
+
 = 1.6.4 = 
 * Changed: Further improve ability to style the output of the bw_tides shortcode,[github bobbingwide uk-tides issue 5]
 * Changed: Now depends on oik v3.1 or higher

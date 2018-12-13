@@ -3,12 +3,12 @@
 Plugin Name: UK tides - heights and times
 Plugin URI: https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
 Description: shortcode for UK tide times and heights [bw_tides]
-Version: 1.6.4
+Version: 1.6.5
 Author: bobbingwide
 Author URI: https://www.oik-plugins.com/author/bobbingwide
 License: GPL2
 
-    Copyright 2011-2017 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2011-2018 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,
@@ -46,6 +46,7 @@ function uk_tides_init() {
  * 2014/11/25 - Now dependent upon oik v2.3
  * 2015/12/15 - Now dependent upon oik v2.5
  * 2017/04/10 - Now dependent upon oik v3.1
+ * 2018/12/12 - Now dependent upon oik v3.2.8
  */ 
 function uk_tides_activation() {
   static $plugin_basename = null;
@@ -56,7 +57,7 @@ function uk_tides_activation() {
       require_once( "admin/oik-activation.php" );
     }
   }  
-  $depends = "oik:3.1";
+  $depends = "oik:3.2.8";
   oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
 }
 

@@ -1,0 +1,86 @@
+# Copyright (C) 2018 UK tides - heights and times
+# This file is distributed under the same license as the UK tides - heights and times package.
+msgid ""
+msgstr ""
+"Project-Id-Version: UK tides - heights and times 1.6.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/uk-tides\n"
+"POT-Creation-Date: 2018-12-13 14:43:29+00:00\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Language: bb_BB\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+#: admin/oik-activation.php:24
+msgid "Install"
+msgstr "Isnatll"
+
+
+#: admin/oik-activation.php:53
+msgid "Activate"
+msgstr "Atcvitae"
+
+
+#: admin/oik-activation.php:73
+msgid "Update"
+msgstr "Udptae"
+
+
+#: admin/oik-activation.php:191
+msgid "%1$s may not be fully functional."
+msgstr "%1$s mAy nOt bE fluly fnutcoianl."
+
+
+#: admin/oik-activation.php:193
+msgid ""
+"Please install and activate the required minimum version of this plugin:"
+msgstr ""
+"Pelsae isnatll And atcvitae thE rqeiuerd mnimium vreison Of tihs pulign:"
+
+
+#: shortcodes/uk-tides.php:471
+msgid "RSS feed URL for location"
+msgstr "RSS feed URL fOr lcotaoin"
+
+
+#: shortcodes/uk-tides.php:472
+msgid "unique key for caching result"
+msgstr "uinuqe kEy fOr ccaihng rselut"
+
+
+#: shortcodes/uk-tides.php:473
+msgid "force loading from the feed"
+msgstr "froce laoidng form thE feed"
+
+
+#: shortcodes/uk-tides.php:479
+msgid "Display tide times and heights for a particular location in the UK. "
+msgstr "Dsilpay tdie tmies And hiehgts fOr A praitucalr lcotaoin In thE UK. "
+
+
+#. Plugin Name of the plugin/theme
+msgid "UK tides - heights and times"
+msgstr "UK tdies - hiehgts And tmies"
+
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/"
+msgstr "https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/"
+
+
+#. Description of the plugin/theme
+msgid "shortcode for UK tide times and heights [bw_tides]"
+msgstr "sohtrocde fOr UK tdie tmies And hiehgts [bw_tides]"
+
+
+#. Author of the plugin/theme
+msgid "bobbingwide"
+msgstr "bboibgniwde"
+
+
+#. Author URI of the plugin/theme
+msgid "https://www.oik-plugins.com/author/bobbingwide"
+msgstr "https://www.oik-plugins.com/author/bobbingwide"
+
