@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2017
+<?php // (C) Copyright Bobbing Wide 2017-2020
 
 /**
  * @package oik
@@ -7,7 +7,7 @@
  */
 class Tests_uk_tides extends BW_UnitTestCase {
 
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 		oik_require( "shortcodes/uk-tides.php", "uk-tides" );
 	}
@@ -43,7 +43,7 @@ class Tests_uk_tides extends BW_UnitTestCase {
 		$context = $this->stream_context();
 		$file = file_get_contents( $url, false, $context );
 		$expected = "<rss version";
-		$this->assertContains( $expected, $file );
+		$this->assertStringContainsString( $expected, $file );
 	}
 	
 	
@@ -53,7 +53,7 @@ class Tests_uk_tides extends BW_UnitTestCase {
 		$context = $this->stream_context();
 		$file = file_get_contents( $url, false, $context );
 		$expected = "<rss version";
-		$this->assertContains( $expected, $file );
+		$this->assertStringContainsString( $expected, $file );
 	}
 	
 	/**
