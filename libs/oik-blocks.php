@@ -87,6 +87,50 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 			wp_set_script_translations( $name, $domain );
 		}
 	}
+
+	/**
+	 * Generates a block editor block.
+	 *
+	 * @param string     $block_type_name e.g. core/paragraph.
+	 * @param array|null $atts array of block attributes.
+	 * @param string|null $content block content
+	 *
+	 * @return string
+	 */
+	function oik_blocks_generate_block( $block_type_name, $atts = null, $content = null ) {
+		$block = "<!-- wp:$block_type_name ";
+		if ( $atts ) {
+			$block.=$atts;
+			$block.=' ';
+		}
+		$block.='-->';
+		$block.="\n";
+		if ( $content ) {
+			$block.=$content;
+			$block.="\n";
+		}
+		$block.="<!-- /wp:$block_type_name -->";
+		$block.="\n\n";
+
+		return $block;
+	}
+
+
+	/**
+	 * Encodes attributes for a block.
+	 *
+	 * @param array $atts Attributes to be JSON encoded.
+ 	 * @return string|null JSON encoded attributes
+	 */
+	function oik_blocks_atts_encode( $atts ) {
+		if ( null !== $atts ) {
+			$block_atts = json_encode( $atts, JSON_UNESCAPED_SLASHES );
+		} else {
+			$block_atts = null;
+		}
+		return $block_atts;
+	}
+
 }
 
 

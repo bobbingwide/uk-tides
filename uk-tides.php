@@ -140,7 +140,8 @@ function uk_tides_dynamic_block_tides( $attributes ) {
 function uk_tides_attributes( $attributes ) {
 	bw_trace2( $attributes );
 	$site = bw_array_get( $attributes, "site", null );
-	$port = bw_array_get( $attributes, "port", null );
+	$port = bw_array_get( $attributes, "port", 'chichester-harbour-entrance' );
+
 	switch ( $site ) {
 		case "couk":
 			$tideurl = "https://tidetimes.co.uk/rss/$port-tide-times";
