@@ -2,8 +2,8 @@
 /*
 Plugin Name: UK tides - heights and times
 Plugin URI: https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
-Description: shortcode for UK tide times and heights [bw_tides]
-Version: 2.0.0-alpha-20200109
+Description: uk-tides block and [bw_tides] shortcode for UK tide times and heights 
+Version: 2.0.0-beta-20200109
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 License: GPL2
@@ -40,37 +40,14 @@ function uk_tides_init() {
 	}
 }
 
-/**
- * Implement "admin_notices" action for UK tides
- *
- * 2014/11/25 - Now dependent upon oik v2.3
- * 2015/12/15 - Now dependent upon oik v2.5
- * 2017/04/10 - Now dependent upon oik v3.1
- * 2018/12/12 - Now dependent upon oik v3.2.8
- * 2020/01/03 - No longer dependent upon oik for the block. But still needed for shortcodes!
- */ 
-function uk_tides_activation() {
-  static $plugin_basename = null;
-  if ( !$plugin_basename ) {
-    $plugin_basename = plugin_basename(__FILE__);
-    add_action( "after_plugin_row_uk-tides/uk-tides.php", "uk_tides_activation" );   
-    if ( !function_exists( "oik_plugin_lazy_activation" ) ) { 
-      require_once( "admin/oik-activation.php" );
-    }
-  }  
-  $depends = "oik:3.2.8";
-  oik_plugin_lazy_activation( __FILE__, $depends, "oik_plugin_plugin_inactive" );
-}
+
 
 /**
  * Function to invoke when UK tides plugin is loaded
  */  
 function uk_tides_plugin_loaded() {
-  add_action( "oik_add_shortcodes", "uk_tides_init" );
-  //add_action( "admin_notices", "uk_tides_activation" );
+	add_action( "oik_add_shortcodes", "uk_tides_init" );
 	add_action( 'init', 'uk_tides_init_blocks', 100 );
-//add_action( 'plugins_loaded', 'uk_tides_plugins_loaded' );
-	//add_action( 'parse_request', 'uk_tides_plugins_loaded' );
 }
 
 /**
@@ -81,10 +58,7 @@ function uk_tides_plugin_loaded() {
 function uk_tides_init_blocks() {
 	uk_tides_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks' );
-
-	//bw_trace2( $library_file, "library_file", false );
 	oik\oik_blocks\oik_blocks_register_editor_scripts(  'uk-tides', 'uk-tides');
-	//oik\oik_blocks\oik_blocks_register_block_styles( 'uk-tides' );
 	uk_tides_register_dynamic_blocks();
 }
 
@@ -109,7 +83,7 @@ function uk_tides_register_dynamic_blocks() {
 				, 'editor_script' => 'uk-tides-blocks-js'
 				, 'editor_style' => null
 				, 'script' => null
-				, 'style' => null // 'uk-tides-blocks-css'
+				, 'style' => null 
 			] );
 	}
 }
@@ -158,7 +132,7 @@ function uk_tides_attributes( $attributes ) {
 }
 
 /**
- * Implements 'parse_request' action for oik-blocks
+ * Implements 'init' action for uk-tides
  *
  * Prepares use of shared libraries if this has not already been done.
  */

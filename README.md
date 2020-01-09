@@ -3,12 +3,12 @@
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcode, tides, UK, heights, times
-* Requires at least: 4.9.8
-* Tested up to: 5.0
+* Requires at least: 5.0
+* Tested up to: 5.3.2
 * Stable tag: 1.6.5
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
-* Gutenberg compatible: Likely Yes
+* Gutenberg compatible: Yes
 
 Tide heights and times for UK ports and harbours
 
@@ -16,11 +16,17 @@ Tide heights and times for UK ports and harbours
 uk-tides displays tide times and heights for a particular location in the UK.
 The information that is displayed is obtained from the RSS feed for tidetimes.org.uk (e.g. https://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss )
 or tidetimes.co.uk ( e.g https://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times ).
-The data is cached until midnight. This plugin implements a lazy smart shortcode using the API provided by the oik plugin.
+The data is cached until midnight.
 
+From version 2.0 this plugin implements a block called UK tides ( uk-tides/uk-tides ).
+
+- It uses the functionality that was previously implemented as the [bw_tides] shortcode.
+- The block is not dependent upon the oik plugin.
+
+Before v2.0.0 it delivered a lazy smart shortcode using the API provided by the oik plugin.
 You implement this on your website using the [bw_tides] shortcode.
 
-The syntax is:
+The syntax for the shortcode is:
 
 [bw_tides
 tideurl="https://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss|other - RSS feed URL for location"
@@ -46,12 +52,12 @@ Examples:
 # Installation 
 1. Upload the contents of the uk-tides plugin to the `/wp-content/plugins/uk-tides' directory
 1. Activate the uk-tides plugin through the 'Plugins' menu in WordPress
-1. Whenever you want to produce UK Tide times and heights for the current date use the [bw_tides] shortcode.
+1. Whenever you want to produce UK Tide times and heights for the current date use the UK tides block.
 
-* Note: uk-tides is dependent upon the oik plugin. You can activate it but it will not work unless oik is also activated.
-Download oik from [oik download](https://wordpress.org/plugins/oik/)
+
 
 # How do I find the value for tideurl? 
+* Note: This is not necessary when you use the block, the tideurl is created based on your selection of Site and Port.
 
 * Visit www.tidetimes.org.uk,
 * click on the location of your choice,
@@ -94,6 +100,12 @@ If you want to read more about the oik plugins then please visit the
 2. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
+# 2.0.0-beta-20200109 
+Now operates as a standalone plugin for both the block and the shortcode.
+
+# 2.0.0-alpha-20200104 
+Now implemented as the UK tides block. The block is no longer dependent upon oik.
+
 # 1.6.5 
 Upgrade for peaceful coexistence with Gutenberg / WordPress 5.0. Now depends on oik v3.2.8
 
@@ -128,6 +140,19 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 2.0.0-beta-20200109 
+* Added: Add transform from oik-block/uk-tides to uk-tides/uk-tides
+* Added: Add example for the uk-tides/uk-tides block
+* Fixed: Default to chichester-harbour-entrance
+* Changed: Remove dependency on oik for both the block and the shortcode.
+* Changed: Support activation of oik v3.3.7 - pre libs/oik-shortcodes
+
+# 2.0.0-alpha-20200104 
+* Added: uk-tides/uk-tides block,https://github.com/bobbingwide/uk-tides/issues/7
+* Tested: With WordPress 5.3.2 and WordPress Multi Site
+* Tested: With PHP 7.3 and PHP 7.4
+* Tested: With PHPUnit 8
+
 # 1.6.5 
 * Changed: Now dependent upon oik v3.2.8, https://github.com/bobbingwide/uk-tides/issues/5
 * Fixed: Reduced display of PHP Warnings for invalid tideurl parameter, https://github.com/bobbingwide/uk-tides/issues/5
