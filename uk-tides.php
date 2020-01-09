@@ -3,7 +3,7 @@
 Plugin Name: UK tides - heights and times
 Plugin URI: https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
 Description: shortcode for UK tide times and heights [bw_tides]
-Version: 2.0.0-alpha-20200104
+Version: 2.0.0-alpha-20200109
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 License: GPL2
@@ -47,6 +47,7 @@ function uk_tides_init() {
  * 2015/12/15 - Now dependent upon oik v2.5
  * 2017/04/10 - Now dependent upon oik v3.1
  * 2018/12/12 - Now dependent upon oik v3.2.8
+ * 2020/01/03 - No longer dependent upon oik for the block. But still needed for shortcodes!
  */ 
 function uk_tides_activation() {
   static $plugin_basename = null;
@@ -67,7 +68,7 @@ function uk_tides_activation() {
 function uk_tides_plugin_loaded() {
   add_action( "oik_add_shortcodes", "uk_tides_init" );
   //add_action( "admin_notices", "uk_tides_activation" );
-	add_action( 'init', 'uk_tides_init_blocks');
+	add_action( 'init', 'uk_tides_init_blocks', 100 );
 //add_action( 'plugins_loaded', 'uk_tides_plugins_loaded' );
 	//add_action( 'parse_request', 'uk_tides_plugins_loaded' );
 }
@@ -80,6 +81,7 @@ function uk_tides_plugin_loaded() {
 function uk_tides_init_blocks() {
 	uk_tides_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks' );
+
 	//bw_trace2( $library_file, "library_file", false );
 	oik\oik_blocks\oik_blocks_register_editor_scripts(  'uk-tides', 'uk-tides');
 	//oik\oik_blocks\oik_blocks_register_block_styles( 'uk-tides' );
@@ -107,7 +109,7 @@ function uk_tides_register_dynamic_blocks() {
 				, 'editor_script' => 'uk-tides-blocks-js'
 				, 'editor_style' => null
 				, 'script' => null
-				, 'style' => 'uk-tides-blocks-css'
+				, 'style' => null // 'uk-tides-blocks-css'
 			] );
 	}
 }
@@ -164,6 +166,15 @@ function uk_tides_plugins_loaded() {
 	uk_tides_boot_libs();
 	oik_require_lib( 'bwtrace' );
 	oik_require_lib( 'bobbfunc' );
+	if ( !function_exists( 'bw_add_shortcode' ) ) {
+		$oik_shortcodes_path = oik_path( 'oik-add-shortcodes.php' );
+		if ( file_exists( $oik_shortcodes_path ) ) {
+			/* Don't load oik-shortcodes library */
+			require_once $oik_shortcodes_path;
+		} else {
+			oik_require_lib( 'oik-shortcodes' );
+		}
+	}
 }
 
 /**

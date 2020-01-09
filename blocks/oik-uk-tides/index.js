@@ -17,9 +17,12 @@ const { __ } = wp.i18n;
 // Get registerBlockType from wp.blocks
 const {
     registerBlockType,
+    createBlock,
 } = wp.blocks;
 const {
     InspectorControls,
+} = wp.blockEditor;
+const {
     ServerSideRender,
 } = wp.editor;
 
@@ -84,14 +87,30 @@ export default registerBlockType(
             },
             port: {
                 type: 'string',
-                default: 'chichester-harbour'
+                default: 'chichester-harbour-entrance'
             }
 
+        },
+        example: {
         },
         supports: {
             customClassName: true,
             className: true,
             html: false,
+        },
+        transforms: {
+            from: [
+                {
+                    type: 'block',
+                    blocks: ['oik-block/uk-tides'],
+                    transform: function( attributes ) {
+                        return createBlock( 'uk-tides/uk-tides', {
+                            site: attributes.site,
+                            port: attributes.port
+                        });
+                    },
+                },
+            ],
         },
 
         edit: props => {
