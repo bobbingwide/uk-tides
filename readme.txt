@@ -1,10 +1,10 @@
 === uk-tides ===
 Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
-Tags: shortcode, tides, UK, heights, times
+Tags: block, shortcode, tides, UK, heights, times
 Requires at least: 5.0
 Tested up to: 5.3.2
-Stable tag: 1.6.5
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Gutenberg compatible: Yes
@@ -99,6 +99,9 @@ If you want to read more about the oik plugins then please visit the
 2. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 == Upgrade Notice ==
+= 2.0.0 =
+Update to UK Tides v2.0.0 for the new UK Tides block.
+
 = 2.0.0-beta-20200109 = 
 Now operates as a standalone plugin for both the block and the shortcode.
 
@@ -139,6 +142,13 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 2.0.0 = 
+* Changed: Reconcile shared libraries,[github bobbingwide uk-tides issues 7]
+* Tested: With WordPress 5.3.2 and WordPress Multi Site
+* Tested: With Gutenberg 7.3.0
+* Tested: With PHP 7.3 and PHP 7.4
+* Tested: With PHPUnit 8 
+
 = 2.0.0-beta-20200109 = 
 Added: Add transform from oik-block/uk-tides to uk-tides/uk-tides
 Added: Add example for the uk-tides/uk-tides block
