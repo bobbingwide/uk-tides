@@ -56,7 +56,7 @@ Examples:
 
 
 = How do I find the value for tideurl? =
-Note: This is not necessary when you use the block, the tideurl is created based on your selection of Site and Port.
+Note: This is not necessary when you use the block, the tideurl is automatically created based on your selection of Site and Port.
 
 * Visit www.tidetimes.org.uk, 
 * click on the location of your choice, 
@@ -82,8 +82,6 @@ Not anymore. It was disabled in oik version 1.11
 uk-tides currently only works for the UK and Ireland since the information is obtained from https://www.tidetimes.org.uk or https://www.tidetimes.co.uk
 If you can point us to a resource for other locations then it should be possible to develop a very similar solution.
 
-For saltwater tide times and heights for the US see [US-tides WordPress plugin](https://www.oik-plugins.com/oik-plugins/us-tides)
-
 = Isn't there some JavaScript that does something similar? =
 Yes. See https://www.tidetimes.org.uk/widgets or https://www.tidetimes.co.uk/widgets
 
@@ -95,8 +93,9 @@ If you want to read more about the oik plugins then please visit the
 
 
 == Screenshots ==
-1. Sample output for Portsmouth, Hants - from tidetimes.org.uk
-2. Sample output for Portsmouth, Hants - from tidetimes.co.uk
+1. Example UK tides block - for Chichester Harbour (Entrance) from tidetimes.org.uk
+2. Sample output for Portsmouth, Hants - from tidetimes.org.uk
+3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 == Upgrade Notice ==
 = 2.0.0 =
@@ -150,11 +149,11 @@ Now dependent upon oik v1.17 or higher
 * Tested: With PHPUnit 8 
 
 = 2.0.0-beta-20200109 = 
-Added: Add transform from oik-block/uk-tides to uk-tides/uk-tides
-Added: Add example for the uk-tides/uk-tides block
-Fixed: Default to chichester-harbour-entrance
-Changed: Remove dependency on oik for both the block and the shortcode.
-Changed: Support activation of oik v3.3.7 - pre libs/oik-shortcodes
+* Added: Add transform from oik-block/uk-tides to uk-tides/uk-tides
+* Added: Add example for the uk-tides/uk-tides block
+* Fixed: Default to chichester-harbour-entrance
+* Changed: Remove dependency on oik for both the block and the shortcode.
+* Changed: Support activation of oik v3.3.7 - pre libs/oik-shortcodes
 
 = 2.0.0-alpha-20200104 =
 * Added: uk-tides/uk-tides block,[github bobbingwide uk-tides issues 7]
