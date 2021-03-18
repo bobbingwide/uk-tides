@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: block, shortcode, tides, UK, heights, times
 Requires at least: 5.0
-Tested up to: 5.3.2
+Tested up to: 5.7
 Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -71,7 +71,7 @@ OR
 * click on the location of your choice,
 * click on the RSS feed icon, 
 * copy the URL from the feed
-e.g. for Brighton Marina the balue for tideurl is https://www.tidetimes.co.uk/rss/brighton-marina-tide-times
+e.g. for Brighton Marina the value for tideurl is https://www.tidetimes.co.uk/rss/brighton-marina-tide-times
 
 
 = Doesn't [bw_tides] already exist in oik? =
@@ -98,6 +98,9 @@ If you want to read more about the oik plugins then please visit the
 3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 == Upgrade Notice ==
+= 2.1.0 = 
+Tested with WordPress 5.7 & PHP 8.0
+
 = 2.0.0 =
 Update to UK Tides v2.0.0 for the new UK Tides block.
 
@@ -141,6 +144,13 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 2.1.0 = 
+* Changed: Updated for PHP 8.0 compatibility
+* Tested: With WordPress 5.7 and WordPress Multi Site
+* Tested: With PHP 8.0 and 7.4
+* Tested: With Gutenberg 10.2.0
+* Tested: With PHPUnit 9 
+
 = 2.0.0 = 
 * Changed: Reconcile shared libraries,[github bobbingwide uk-tides issues 7]
 * Tested: With WordPress 5.3.2 and WordPress Multi Site
