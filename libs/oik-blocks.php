@@ -81,11 +81,16 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 			wp_register_script(
 				$name,
 				oik_url( $block_path, $plugin ),
-				[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-data' ],
+				[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-block-editor', 'wp-server-side-render', 'wp-i18n', 'wp-data' ],
 				filemtime( oik_path( $block_path, $plugin ) )
 			);
 			wp_set_script_translations( $name, $domain );
 		}
+		/** Workaround to prevent the Widgets block editor from displaying a Doing it wrong User Notice
+		 * regarding the dependency on `wp-editor`. The dependency on `wp-editor` is required; the blocks fail
+		 * if the dependency is not satisfied.
+		 */
+		//remove_filter( 'admin_head', 'wp_check_widget_editor_deps' );
 	}
 
 	/**
