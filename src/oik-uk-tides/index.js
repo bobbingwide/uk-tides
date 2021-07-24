@@ -12,31 +12,20 @@
 //import './style.scss';
 //import './editor.scss';
 
-// Get just the __() localization function from wp.i18n
-const { __ } = wp.i18n;
-// Get registerBlockType from wp.blocks
-const {
-    registerBlockType,
-    createBlock,
-} = wp.blocks;
-const {
-    InspectorControls,
-} = wp.blockEditor;
-const {
-    ServerSideRender,
-} = wp.editor;
+import { __ } from '@wordpress/i18n';
 
-const {
+// Get registerBlockType from wp.blocks
+import { registerBlockType } from '@wordpress/blocks';
+import { InspectorControls } from '@wordpress/block-editor';
+import ServerSideRender from '@wordpress/server-side-render';
+import {
     Toolbar,
     PanelBody,
     PanelRow,
     FormToggle,
     TextControl,
-    SelectControl,
-
-
-} = wp.components;
-const Fragment = wp.element.Fragment;
+    SelectControl } from '@wordpress/components';
+import { Fragment} from '@wordpress/element';
 import { map, partial } from 'lodash';
 
 

@@ -4,9 +4,8 @@
  *
  * Each block is in a separate folder
  * The build directory is the target.
- * See webpack.config.js
  *
- * @copyright (C) Copyright Bobbing Wide 2020
+ * @copyright (C) Copyright Bobbing Wide 2020,2021
  * @author Herb Miller @bobbingwide
  */
 
