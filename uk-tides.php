@@ -1,9 +1,9 @@
-<?php 
+<?php
 /*
 Plugin Name: UK tides - heights and times
 Plugin URI: https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/
-Description: uk-tides block and [bw_tides] shortcode for UK tide times and heights 
-Version: 2.1.0
+Description: uk-tides block and [bw_tides] shortcode for UK tide times and heights
+Version: 3.0.0
 Author: bobbingwide
 Author URI: https://bobbingwide.com/about-bobbing-wide
 License: GPL2
@@ -26,7 +26,7 @@ License: GPL2
 
 */
 
-uk_tides_plugin_loaded();  
+uk_tides_plugin_loaded();
 
 /**
  * Implement "oik_add_shortcodes" action for UK tides
@@ -44,7 +44,7 @@ function uk_tides_init() {
 
 /**
  * Function to invoke when UK tides plugin is loaded
- */  
+ */
 function uk_tides_plugin_loaded() {
 	add_action( "oik_add_shortcodes", "uk_tides_init" );
 	add_action( 'init', 'uk_tides_init_blocks', 100 );
@@ -58,7 +58,7 @@ function uk_tides_plugin_loaded() {
 function uk_tides_init_blocks() {
 	uk_tides_plugins_loaded();
 	$library_file = oik_require_lib( 'oik-blocks' );
-	oik\oik_blocks\oik_blocks_register_editor_scripts(  'uk-tides', 'uk-tides');
+	//oik\oik_blocks\oik_blocks_register_editor_scripts(  'uk-tides', 'uk-tides');
 	uk_tides_register_dynamic_blocks();
 }
 
@@ -72,6 +72,7 @@ function uk_tides_init_blocks() {
  * script, style, editor_script, and editor_style
  */
 function uk_tides_register_dynamic_blocks() {
+	/*
 	if ( function_exists( 'register_block_type' ) ) {
 		register_block_type( 'uk-tides/uk-tides',
 			[
@@ -83,9 +84,14 @@ function uk_tides_register_dynamic_blocks() {
 				, 'editor_script' => 'uk-tides-blocks-js'
 				, 'editor_style' => null
 				, 'script' => null
-				, 'style' => null 
+				, 'style' => null
 			] );
 	}
+	'render_callback'=>'uk_tides_dynamic_block_tides',
+	*/
+	$args = [ 'render_callback' => 'uk_tides_dynamic_block_tides'];
+	$registered = register_block_type_from_metadata( __DIR__, $args );
+	bw_trace2( $registered, "registered", false );
 }
 
 /**
