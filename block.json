@@ -21,8 +21,8 @@
 		"customClassName": true,
 		"className": true
 	  },
-    "keywords": [ "UK", "tides", "times", "heights","oik" ],
-	"textDomain": "uk-tides",
+    "keywords": [ "UK", "tides", "times", "heights", "oik" ],
+	"textdomain": "uk-tides",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
