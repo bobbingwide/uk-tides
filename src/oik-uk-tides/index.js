@@ -28,6 +28,7 @@ import {
 import { Fragment} from '@wordpress/element';
 import { map, partial } from 'lodash';
 
+import metadata from '../../block.json';
 
 /**
 * These are the different options for the UK tides site attribute
@@ -44,48 +45,9 @@ import portOptions from './tidetimes-co-uk.js';
 /**
  * Register the WordPress block
  */
-export default registerBlockType(
-    // Namespaced, hyphens, lowercase, unique name
-    'uk-tides/uk-tides',
-    {
-        // Localize title using wp.i18n.__()
-        title: __( 'UK tides' ),
-
-        description: 'Tide times and heights',
-
-        // Category Options: common, formatting, layout, widgets, embed
-        category: 'widgets',
-
-        // Dashicons Options - https://goo.gl/aTM1DQ
-        icon: 'chart-bar',
-
-        // Limit to 3 Keywords / Phrases
-        keywords: [
-            __( 'UK' ),
-            __( 'tides' ),
-            __( 'times' ),
-            __( 'heights'),
-             __( 'oik' ),
-        ],
-
-        // Set for each piece of dynamic data used in your block
-        attributes: {
-            site: {
-                type: 'string',
-
-            },
-            port: {
-                type: 'string',
-                default: 'chichester-harbour-entrance'
-            }
-
-        },
-        example: {
-        },
-        supports: {
-            customClassName: true,
-            className: true,
-            html: false,
+export default registerBlockType( metadata,
+       {
+		example: {
         },
         transforms: {
             from: [
