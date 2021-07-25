@@ -6,17 +6,18 @@
  * - Supports easier to use parameter for specifying the location ( Port )
  * - Server side rendering when the block is not selected.
  *
- * @copyright (C) Copyright Bobbing Wide 2018-2020
+ * @copyright (C) Copyright Bobbing Wide 2018-2021
  * @author Herb Miller @bobbingwide
  */
 //import './style.scss';
 //import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
 // Get registerBlockType from wp.blocks
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls } from '@wordpress/block-editor';
+import {AlignmentControl, BlockControls, InspectorControls, useBlockProps} from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
 import {
     Toolbar,
@@ -65,6 +66,13 @@ export default registerBlockType( metadata,
         },
 
         edit: props => {
+			const { textAlign, label } = props.attributes;
+
+			const blockProps = useBlockProps( {
+				className: classnames( {
+					[ `has-text-align-${ textAlign }` ]: textAlign,
+				} ),
+			} );
             const onChangeSite =  ( event ) => {
                 props.setAttributes( { site: event } );
             };
@@ -84,10 +92,16 @@ export default registerBlockType( metadata,
                 props.setAttributes( { [key] : value } );
             };
 
-
-
             return (
                 <Fragment>
+					<BlockControls group="block">
+						<AlignmentControl
+							value={ textAlign }
+							onChange={ ( nextAlign ) => {
+								props.setAttributes( { textAlign: nextAlign } );
+							} }
+						/>
+					</BlockControls>
                     <InspectorControls >
                         <PanelBody>
                             <PanelRow>
@@ -113,9 +127,11 @@ export default registerBlockType( metadata,
 
                     </InspectorControls>
 
-                    <ServerSideRender
-                        block="uk-tides/uk-tides" attributes={ props.attributes }
-                    />
+					<div { ...blockProps}>
+                    	<ServerSideRender
+                        	block="uk-tides/uk-tides" attributes={ props.attributes }
+                    	/>
+					</div>
                 </Fragment>
 
             );
