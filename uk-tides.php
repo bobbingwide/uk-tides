@@ -105,7 +105,22 @@ function uk_tides_dynamic_block_tides( $attributes ) {
 	if ( ! $html ) {
 		$attributes = uk_tides_attributes( $attributes );
 		$html = bw_tides( $attributes, null, null );
+		$html = uk_tides_server_side_wrapper( $attributes, $html );
 	}
+	return $html;
+}
+
+function uk_tides_server_side_wrapper( $attributes, $html ) {
+	$align_class_name=empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	$extra_attributes  =[ 'class'=>$align_class_name ];
+	$wrapper_attributes = get_block_wrapper_attributes( $extra_attributes );
+
+	$html=sprintf(
+		'<div %1$s>%2$s</div>',
+		$wrapper_attributes,
+		$html
+	);
+
 	return $html;
 }
 
@@ -120,7 +135,7 @@ function uk_tides_dynamic_block_tides( $attributes ) {
  * @return array with tideurl and store set from site and port
  */
 function uk_tides_attributes( $attributes ) {
-	bw_trace2( $attributes );
+	bw_trace2( );
 	$site = bw_array_get( $attributes, "site", null );
 	$port = bw_array_get( $attributes, "port", 'chichester-harbour-entrance' );
 
