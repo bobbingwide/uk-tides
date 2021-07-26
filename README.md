@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: block, shortcode, tides, UK, heights, times
 * Requires at least: 5.0
-* Tested up to: 5.7
-* Stable tag: 2.1.0
+* Tested up to: 5.8
+* Stable tag: 3.0.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Gutenberg compatible: Yes
@@ -99,6 +99,9 @@ If you want to read more about the oik plugins then please visit the
 3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
+# 3.0.0 
+Now supports color and typography settings. Tested with WordPress 5.8.
+
 # 2.1.0 
 Tested with WordPress 5.7 & PHP 8.0
 
@@ -145,6 +148,18 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 ## Changelog 
+# 3.0.0 
+* Fixed: Implement local workaround for missing space between on and Day #10
+* Added: Add Server side support for rendering the block with colours and typography attributes #9
+* Added: Add text align toolbar icon group; makes the block selectable #9
+* Changed: Register block using block.json #9
+* Changed: Move build/oik-uk-tides to src/oik-uk-tides. Refactor to import from packages #9
+* Changed: Update package.json based on sb-starting-block and install @wordpress/scripts #9
+* Changed: Remove files no longer needed by wp-scripts. Update .gitignore #9
+* Tested: With WordPress 5.8 and WordPress Multi Site
+* Tested: With Gutenberg 11.1.0
+* Tested: With PHP 8.0
+
 # 2.1.0 
 * Changed: Updated for PHP 8.0 compatibility
 * Tested: With WordPress 5.7 and WordPress Multi Site

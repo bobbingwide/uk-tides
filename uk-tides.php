@@ -65,33 +65,16 @@ function uk_tides_init_blocks() {
 
 
 /**
- * Registers action/filter hooks for uk-tides's dynamic blocks
+ * Registers UK tides's dynamic blocks
  *
  * We have to do this during init, which comes after _enqueue_ stuff
  *
  * script, style, editor_script, and editor_style
  */
 function uk_tides_register_dynamic_blocks() {
-	/*
-	if ( function_exists( 'register_block_type' ) ) {
-		register_block_type( 'uk-tides/uk-tides',
-			[
-				'render_callback'=>'uk_tides_dynamic_block_tides',
-				'attributes'     =>[
-					'site' =>[ 'type'=>'string' ],
-					'port'=>[ 'type'=>'string' ]
-				]
-				, 'editor_script' => 'uk-tides-blocks-js'
-				, 'editor_style' => null
-				, 'script' => null
-				, 'style' => null
-			] );
-	}
-	'render_callback'=>'uk_tides_dynamic_block_tides',
-	*/
 	$args = [ 'render_callback' => 'uk_tides_dynamic_block_tides'];
 	$registered = register_block_type_from_metadata( __DIR__, $args );
-	bw_trace2( $registered, "registered", false );
+	//bw_trace2( $registered, "registered", false );
 }
 
 /**
@@ -135,7 +118,7 @@ function uk_tides_server_side_wrapper( $attributes, $html ) {
  * @return array with tideurl and store set from site and port
  */
 function uk_tides_attributes( $attributes ) {
-	bw_trace2( );
+	//bw_trace2( );
 	$site = bw_array_get( $attributes, "site", null );
 	$port = bw_array_get( $attributes, "port", 'chichester-harbour-entrance' );
 
