@@ -2,13 +2,13 @@
 namespace oik\oik_blocks;
 
 if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
-	define( 'OIK_BLOCKS_INCLUDED', '1.1.0' );
+	define( 'OIK_BLOCKS_INCLUDED', '1.2.0' );
 	define( 'OIK_BLOCKS_FILE', __FILE__ );
 
 	/**
 	 * The oik-blocks shared library for Gutenberg blocks.
 	 *
-	 * @copyright (C) Bobbing Wide 2019, 2020
+	 * @copyright (C) Bobbing Wide 2019, 2020, 2022
 	 * Library: oik-blocks
 	 * Depends: oik_boot, bobbfunc
 	 * Provides: oik-blocks
@@ -81,16 +81,11 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 			wp_register_script(
 				$name,
 				oik_url( $block_path, $plugin ),
-				[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-block-editor', 'wp-server-side-render', 'wp-i18n', 'wp-data' ],
+				[ 'wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-data' ],
 				filemtime( oik_path( $block_path, $plugin ) )
 			);
 			wp_set_script_translations( $name, $domain );
 		}
-		/** Workaround to prevent the Widgets block editor from displaying a Doing it wrong User Notice
-		 * regarding the dependency on `wp-editor`. The dependency on `wp-editor` is required; the blocks fail
-		 * if the dependency is not satisfied.
-		 */
-		//remove_filter( 'admin_head', 'wp_check_widget_editor_deps' );
 	}
 
 	/**
@@ -103,6 +98,21 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 	 * @return string
 	 */
 	function oik_blocks_generate_block( $block_type_name, $atts = null, $content = null ) {
+		$block = oik_blocks_generate_block_start( $block_type_name, $atts, $content );
+		$block .= oik_blocks_generate_block_end( $block_type_name );
+		return $block;
+	}
+
+	/**
+	 * Generates the start of a block.
+	 *
+	 * @param $block_type_name
+	 * @param null $atts
+	 * @param null $content
+	 *
+	 * @return string
+	 */
+	function oik_blocks_generate_block_start( $block_type_name, $atts = null, $content = null ) {
 		$block = "<!-- wp:$block_type_name ";
 		if ( $atts ) {
 			$block.=$atts;
@@ -114,12 +124,21 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 			$block.=$content;
 			$block.="\n";
 		}
-		$block.="<!-- /wp:$block_type_name -->";
-		$block.="\n\n";
-
 		return $block;
 	}
 
+	/**
+	 * Generates the end of a block.
+	 *
+	 * @param $block_type_name
+	 *
+	 * @return string
+	 */
+	function oik_blocks_generate_block_end( $block_type_name ) {
+		$block ="<!-- /wp:$block_type_name -->";
+		$block.="\n\n";
+		return $block;
+	}
 
 	/**
 	 * Encodes attributes for a block.
@@ -135,8 +154,6 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 		}
 		return $block_atts;
 	}
-
-
 
 	/**
 	 * Unsets or trims an attribute to make it shortcode compatible.
@@ -160,9 +177,3 @@ if ( ! defined( 'OIK_BLOCKS_INCLUDED' ) ) {
 		return $attributes;
 	}
 }
-
-
-
-
-
-
