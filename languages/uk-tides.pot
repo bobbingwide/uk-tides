@@ -1,94 +1,70 @@
-# Copyright (C) 2021 UK tides - heights and times
-# This file is distributed under the same license as the UK tides - heights and times package.
+# Copyright (C) 2022 bobbingwide
+# This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: UK tides - heights and times 2.1.0\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/uk-tides\n"
-"POT-Creation-Date: 2021-03-18 20:30:05+00:00\n"
+"Project-Id-Version: UK tides - heights and times 3.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/uk-tides\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2022-08-15T10:18:05+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0\n"
+"X-Domain: uk-tides\n"
 
-#: libs/class-BW-.php:108
-msgid "Toggle panel: %s"
-msgstr ""
-
-#: libs/oik-depends.php:100
-msgid " version "
-msgstr ""
-
-#: libs/oik-depends.php:103
-msgid "Plugin %1$s may not be fully functional."
-msgstr ""
-
-#: libs/oik-depends.php:106 libs/oik-depends.php:152
-msgid ""
-"Please install and activate the required minimum version of this plugin: %1$s"
-msgstr ""
-
-#: libs/oik-depends.php:147
-msgid "version"
-msgstr ""
-
-#: libs/oik-depends.php:150
-msgid "%1$s may not be fully functional."
-msgstr ""
-
-#: libs/oik-depends.php:284
-msgid "Install %1$s"
-msgstr ""
-
-#: libs/oik-depends.php:312
-msgid "Activate %1$s"
-msgstr ""
-
-#: libs/oik-depends.php:330
-msgid "Upgrade %1$s"
-msgstr ""
-
-#: libs/oik-shortcodes.php:28
-msgid "<b>Unable to locate routine to expand shortcode.</b>"
-msgstr ""
-
-#: libs/oik-shortcodes.php:243
-msgid "missing post processing function: %1$s"
-msgstr ""
-
-#: shortcodes/uk-tides.php:471
-msgid "RSS feed URL for location"
-msgstr ""
-
-#: shortcodes/uk-tides.php:472
-msgid "unique key for caching result"
-msgstr ""
-
-#: shortcodes/uk-tides.php:473
-msgid "force loading from the feed"
-msgstr ""
-
-#: shortcodes/uk-tides.php:479
-msgid "Display tide times and heights for a particular location in the UK. "
-msgstr ""
-
-#. Plugin Name of the plugin/theme
+#. Plugin Name of the plugin
 msgid "UK tides - heights and times"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
+#. Plugin URI of the plugin
 msgid "https://www.oik-plugins.com/oik-plugins/uk-tides-times-and-heights/"
 msgstr ""
 
-#. Description of the plugin/theme
+#. Description of the plugin
 msgid "uk-tides block and [bw_tides] shortcode for UK tide times and heights"
 msgstr ""
 
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "bobbingwide"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://bobbingwide.com/about-bobbing-wide"
+msgstr ""
+
+#: block.json
+msgctxt "block title"
+msgid "UK tides"
+msgstr ""
+
+#: block.json
+msgctxt "block description"
+msgid "Tide times and heights"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "UK"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "tides"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "times"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "heights"
+msgstr ""
+
+#: block.json
+msgctxt "block keyword"
+msgid "oik"
 msgstr ""
