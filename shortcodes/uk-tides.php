@@ -292,6 +292,7 @@ function bw_tideurl_namify( $tideurl ) {
  * @param string $desc description
  */
 function bw_tides_format_desc( $desc ) {
+ $desc = wp_unslash( $desc );
  $desc = str_replace( " on", " on<br />", $desc );
   $descs = explode( "<br/>", $desc );
   bw_trace2( $descs, "descs array", false, BW_TRACE_DEBUG );
