@@ -35,12 +35,16 @@ import metadata from '../../block.json';
 * These are the different options for the UK tides site attribute
 */
 const siteOptions =
-    { "org": "tidetimes.org.uk", // 709 as of Dec 2018
-    "couk": "tidetimes.co.uk", //
+    { "org": "tidetimes.org.uk", // 710 as of Nov 2022
+    "couk": "tidetimes.co.uk", // 726 as of Nov 2022
 
     };
-import portOptions from './tidetimes-co-uk.js';
+import portOptionsCoUK from './tidetimes-co-uk.js';
+import portOptionsOrgUK from './tidetimes-org-uk.js';
 
+// Early attempts at improving the portOptions for tidetimes.co.uk
+//import portOptionsCoUK  from './tidetimes-co-uk-port-options.js';
+//import { mappedportOptionsOrgUK } from 'tidetimes-org-uk-port-options.js'
 
 
 /**
@@ -91,6 +95,8 @@ export default registerBlockType( metadata,
                 //setAttributes( nextAttributes );
                 props.setAttributes( { [key] : value } );
             };
+
+			var portOptions = props.attributes.site == 'org' ? portOptionsOrgUK : portOptionsCoUK;
 
             return (
                 <Fragment>
