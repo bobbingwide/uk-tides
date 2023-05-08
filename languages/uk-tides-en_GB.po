@@ -1,8 +1,8 @@
-# Copyright (C) 2022 bobbingwide
+# Copyright (C) 2023 bobbingwide
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: UK tides - heights and times 3.0.0\n"
+"Project-Id-Version: UK tides - heights and times 3.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/uk-tides\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Language: en_GB\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-15T10:18:05+00:00\n"
+"POT-Creation-Date: 2023-05-08T09:49:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: uk-tides\n"
