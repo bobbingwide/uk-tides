@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.255883">
-    <testsuite name="uk-tides" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.255883">
-      <testsuite name="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.255883">
-        <testcase name="test_simplexml_load_file" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="31" assertions="1" time="0.526871"/>
-        <testcase name="test_load_from_tidetimes_co_uk_https" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="41" assertions="1" time="0.375497"/>
-        <testcase name="test_load_from_tidetimes_co_uk_http" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="50" assertions="1" time="0.330795"/>
-        <testcase name="test_bw_tides_format_stuff" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="63" assertions="1" time="0.007474"/>
-        <testcase name="test_bw_tides_format_stuff_div_0" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="72" assertions="1" time="0.015245"/>
+  <testsuite name="" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.049623">
+    <testsuite name="uk-tides" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.049623">
+      <testsuite name="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="1.049623">
+        <testcase name="test_simplexml_load_file" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="31" assertions="1" time="0.556903"/>
+        <testcase name="test_load_from_tidetimes_co_uk_https" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="41" assertions="1" time="0.286659"/>
+        <testcase name="test_load_from_tidetimes_co_uk_http" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="50" assertions="1" time="0.180674"/>
+        <testcase name="test_bw_tides_format_stuff" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="63" assertions="1" time="0.010135"/>
+        <testcase name="test_bw_tides_format_stuff_div_0" class="Tests_uk_tides" classname="Tests_uk_tides" file="C:\apache\htdocs\wordpress\wp-content\plugins\uk-tides\tests\test-uk-tides.php" line="72" assertions="1" time="0.015252"/>
       </testsuite>
     </testsuite>
   </testsuite>

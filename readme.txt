@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: block, shortcode, tides, UK, heights, times
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.3
 Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,9 +12,9 @@ Gutenberg compatible: Yes
 Tide heights and times for UK ports and harbours
 
 == Description ==
-uk-tides displays tide times and heights for a particular location in the UK. 
+uk-tides displays tide times and heights for a particular location in the UK.
 The information that is displayed is obtained from the RSS feed for tidetimes.org.uk (eg https://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss )
-or tidetimes.co.uk ( eg https://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times ). 
+or tidetimes.co.uk ( eg https://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times ).
 The data is cached until midnight.
 
 This plugin implements a block called UK tides ( uk-tides/uk-tides ).
@@ -25,7 +25,7 @@ This plugin implements a block called UK tides ( uk-tides/uk-tides ).
 
 
 The syntax for the [bw_tides] shortcode is:
-  
+
 [bw_tides
 tideurl="https://www.tidetimes.org.uk/chichester-harbour-entrance-tide-times.rss|other - RSS feed URL for location"
 store="1|store key - unique key for caching result"]
@@ -33,17 +33,17 @@ store="1|store key - unique key for caching result"]
 
 Examples:
  [bw_tides] with no parameters will display the tide times and heights for Chichester Harbour Entrance. The information will be cached in store=1 until midnight.
- 
+
  [bw_tides store=bw_tides_pompey tideurl="https://www.tidetimes.org.uk/portsmouth"] will display the tide times and heights obtained from
  https://www.tidetimes.org.uk/portsmouth-tide-times.rss and cache the result in a store named 'bw_tides_pompey'
- 
+
  Note: Using the store parameter allows you to display tide time and height information for more than one location.
- 
+
 Examples:
  If you prefer you can use tidetimes.co.uk as the source for tidal information.
- 
+
  [bw_tides tideurl="https://www.tidetimes.co.uk/rss/chichester-harbour-entrance-tide-times"]
- 
+
 
 == Frequently Asked Questions ==
 
@@ -56,18 +56,18 @@ Examples:
 = How do I find the value for tideurl? =
 Note: This is not necessary when you use the block, the tideurl is automatically created based on your selection of Site and Port.
 
-* Visit www.tidetimes.org.uk, 
-* click on the location of your choice, 
-* click on the RSS feed icon, 
+* Visit www.tidetimes.org.uk,
+* click on the location of your choice,
+* click on the RSS feed icon,
 * copy the URL from the feed
 
 eg for Brighton Marina the value for tideurl is https://www.tidetimes.org.uk/brighton-marina-tide-times.rss
 
 OR
 
-* Visit www.tidetimes.co.uk, 
+* Visit www.tidetimes.co.uk,
 * click on the location of your choice,
-* click on the RSS feed icon, 
+* click on the RSS feed icon,
 * copy the URL from the feed
 eg for Brighton Marina the value for tideurl is https://www.tidetimes.co.uk/rss/brighton-marina-tide-times
 
@@ -93,12 +93,12 @@ If you want to read more about the oik plugins then please visit the
 3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 == Upgrade Notice ==
-= 3.1.1 = 
+= 3.1.1 =
 Built with latest wp-scripts. Tested with WordPress 6.2
 
 == Changelog ==
-= 3.1.1 = 
+= 3.1.1 =
 * Changed: Updated wp-scripts #23
 * Tested: With WordPress 6.2 and WordPress Multi Site
-* Tested: With Gutenberg 15.7.0 
+* Tested: With Gutenberg 15.7.0
 * Tested: With PHP 8.0
