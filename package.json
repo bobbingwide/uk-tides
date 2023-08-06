@@ -1,6 +1,6 @@
 {
 	"name": "uk-tides",
-	"version": "3.0.0",
+	"version": "3.1.2",
 	"description": "UK tides",
 	"author": "bobbingwide",
 	"license": "GPLv3",
@@ -18,12 +18,12 @@
 		"l10n": "l10n uk-tides"
 	},
 	"dependencies": {
-		"@wordpress/block-editor": "^12.0.0",
-		"@wordpress/blocks": "^12.9.0",
-		"@wordpress/i18n": "^4.32.0",
+		"@wordpress/block-editor": "^12.6.0",
+		"@wordpress/blocks": "^12.15.0",
+		"@wordpress/i18n": "^4.38.0",
 		"postcss": "^8.2.14"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^26.3.0"
+		"@wordpress/scripts": "^26.9.0"
 	}
 }
