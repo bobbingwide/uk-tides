@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 3.1.1 =
+Built with latest wp-scripts. Tested with WordPress 6.2
+
 = 3.1.0 = 
 Now supports several additional ports. Built with latest wp-scripts and shared libraries. Tested with WordPress 6.1 
 
@@ -54,6 +57,12 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 3.1.1 =
+* Changed: Updated wp-scripts #23
+* Tested: With WordPress 6.2 and WordPress Multi Site
+* Tested: With Gutenberg 15.7.0
+* Tested: With PHP 8.0
+
 = 3.1.0 = 
 * Fixed: Cater for single quotes in Port name #17
 * Fixed: Rebuild port select list for tidetimes.co.uk and timetimes.org.uk #18
