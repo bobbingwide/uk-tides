@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 3.2.0 =
+Update for support for PHP 8.1 and PHP 8.2
+
 = 3.1.1 =
 Built with latest wp-scripts. Tested with WordPress 6.2
 
@@ -57,6 +60,14 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 3.2.0 =
+* Changed: Updated wp-scripts #23
+* Changed: Support PHP 8.1 and PHP 8.2 #27
+* Tested: With WordPress 6.4-RC3 and WordPress Multisite
+* Tested: With Gutenberg 16.9.0
+* Tested: With PHP 8.0, PHP 8.1 and PHP 8.2
+* Tested: With PHPUnit 9.6
+
 = 3.1.1 =
 * Changed: Updated wp-scripts #23
 * Tested: With WordPress 6.2 and WordPress Multi Site
