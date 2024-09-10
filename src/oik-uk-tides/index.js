@@ -13,7 +13,7 @@
 //import './editor.scss';
 
 import { __ } from '@wordpress/i18n';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 // Get registerBlockType from wp.blocks
 import { registerBlockType } from '@wordpress/blocks';
@@ -73,7 +73,7 @@ export default registerBlockType( metadata,
 			const { textAlign, label } = props.attributes;
 
 			const blockProps = useBlockProps( {
-				className: classnames( {
+				className: clsx( {
 					[ `has-text-align-${ textAlign }` ]: textAlign,
 				} ),
 			} );
