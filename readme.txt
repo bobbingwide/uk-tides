@@ -1,7 +1,7 @@
 === uk-tides ===
 Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
-Tags: block, shortcode, tides, UK, heights, times
+Tags: block, shortcode, tide-times, UK, heights
 Requires at least: 5.0
 Tested up to: 6.6.1
 Stable tag: 3.3.0
@@ -94,7 +94,7 @@ If you want to read more about the oik plugins then please visit the
 
 == Upgrade Notice ==
 = 3.3.0 =
-Update for support for PHP 8.3. 
+Update for support for PHP 8.3.
 
 == Changelog ==
 = 3.3.0 =
