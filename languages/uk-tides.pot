@@ -1,18 +1,17 @@
-# Copyright (C) 2023 bobbingwide
+# Copyright (C) 2024 bobbingwide
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: UK tides - heights and times 3.2.0\n"
+"Project-Id-Version: UK tides - heights and times 3.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/uk-tides\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-02T17:52:42+00:00\n"
+"POT-Creation-Date: 2024-09-24T12:28:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
-"X-Domain: uk-tides\n"
 
 #. Plugin Name of the plugin
 msgid "UK tides - heights and times"
@@ -34,37 +33,98 @@ msgstr ""
 msgid "https://bobbingwide.com/about-bobbing-wide"
 msgstr ""
 
-#: block.json
+#. translators: %s: panel title
+#: libs/class-BW-.php:109
+msgid "Toggle panel: %s"
+msgstr ""
+
+#: libs/oik-depends.php:100
+msgid " version "
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:104
+msgid "Plugin %1$s may not be fully functional."
+msgstr ""
+
+#. translators: %s: plugin dependencies, comma separated
+#: libs/oik-depends.php:108
+#: libs/oik-depends.php:156
+msgid "Please install and activate the required minimum version of this plugin: %1$s"
+msgstr ""
+
+#: libs/oik-depends.php:149
+msgid "version"
+msgstr ""
+
+#. translators: %s: plugin dependencies, comma separated
+#: libs/oik-depends.php:153
+msgid "%1$s may not be fully functional."
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:289
+msgid "Install %1$s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:318
+msgid "Activate %1$s"
+msgstr ""
+
+#. translators: %s: plugin name
+#: libs/oik-depends.php:337
+msgid "Upgrade %1$s"
+msgstr ""
+
+#: libs/oik-shortcodes.php:28
+msgid "<b>Unable to locate routine to expand shortcode.</b>"
+msgstr ""
+
+#. translators: %s: function name
+#: libs/oik-shortcodes.php:244
+msgid "missing post processing function: %1$s"
+msgstr ""
+
+#: build/UK-tides.js:1
+msgid "Site"
+msgstr ""
+
+#: build/UK-tides.js:1
+msgid "Port"
+msgstr ""
+
+#: build/oik-uk-tides/block.json
 msgctxt "block title"
 msgid "UK tides"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block description"
 msgid "Tide times and heights"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block keyword"
 msgid "UK"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block keyword"
 msgid "tides"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block keyword"
 msgid "times"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block keyword"
 msgid "heights"
 msgstr ""
 
-#: block.json
+#: build/oik-uk-tides/block.json
 msgctxt "block keyword"
 msgid "oik"
 msgstr ""
