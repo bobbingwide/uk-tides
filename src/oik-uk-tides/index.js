@@ -6,7 +6,7 @@
  * - Supports easier to use parameter for specifying the location ( Port )
  * - Server side rendering when the block is not selected.
  *
- * @copyright (C) Copyright Bobbing Wide 2018-2021
+ * @copyright (C) Copyright Bobbing Wide 2018-2024
  * @author Herb Miller @bobbingwide
  */
 //import './style.scss';
@@ -29,28 +29,20 @@ import {
 import { Fragment} from '@wordpress/element';
 import { map, partial } from 'lodash';
 
-import metadata from '../../block.json';
-
 /**
 * These are the different options for the UK tides site attribute
 */
 const siteOptions =
     { "org": "tidetimes.org.uk", // 710 as of Nov 2022
     "couk": "tidetimes.co.uk", // 726 as of Nov 2022
-
     };
 import portOptionsCoUK from './tidetimes-co-uk.js';
 import portOptionsOrgUK from './tidetimes-org-uk.js';
 
-// Early attempts at improving the portOptions for tidetimes.co.uk
-//import portOptionsCoUK  from './tidetimes-co-uk-port-options.js';
-//import { mappedportOptionsOrgUK } from 'tidetimes-org-uk-port-options.js'
-
-
 /**
  * Register the WordPress block
  */
-export default registerBlockType( metadata,
+export default registerBlockType( 'uk-tides/uk-tides',
        {
 		example: {
         },
@@ -111,7 +103,7 @@ export default registerBlockType( metadata,
                     <InspectorControls >
                         <PanelBody>
                             <PanelRow>
-                                <SelectControl label="Site" value={props.attributes.site}
+                                <SelectControl label={ __( "Site", 'uk-tides' ) } value={props.attributes.site}
                                                options={ map( siteOptions, ( key, label ) => ( { value: label, label: key } ) ) }
                                                onChange={partial( onChangeAttr, 'site' )}
                                 />
@@ -119,7 +111,7 @@ export default registerBlockType( metadata,
                             </PanelRow>
 
                             <PanelRow>
-                                <SelectControl label="Port"
+                                <SelectControl label={ __( "Port", 'uk-tides' ) }
                                                    value={ props.attributes.port }
                                                options={ map( portOptions, (key, label ) => ( { value: label, label: key } ) ) }
                                              onChange={partial( onChangeAttr, 'port' )}

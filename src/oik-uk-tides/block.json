@@ -54,7 +54,7 @@
 	  },
     "keywords": [ "UK", "tides", "times", "heights", "oik" ],
 	"textdomain": "uk-tides",
-	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"editorScript": "file:../../build/UK-tides.js",
+	"editorStyle": "file:../../build/UK-tides.css",
+	"style": "file:../../build/style-UK-tides.css"
 }
