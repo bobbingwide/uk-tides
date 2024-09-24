@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 3.3.0 =
+Update for support for PHP 8.3.
+
 = 3.2.0 =
 Update for support for PHP 8.1 and PHP 8.2
 
@@ -60,6 +63,14 @@ Still dependent upon oik v1.17 or higher
 Now dependent upon oik v1.17 or higher
 
 == Changelog ==
+= 3.3.0 =
+* Changed: Updated wp-scripts #23
+* Changed: Rebuild port select list #18
+* Tested: With WordPress 6.6.1 and WordPress Multisite
+* Tested: With Gutenberg 19.1.0
+* Tested: With PHP 8.3
+* Tested: With PHPUnit 9.6
+
 = 3.2.0 =
 * Changed: Updated wp-scripts #23
 * Changed: Support PHP 8.1 and PHP 8.2 #27

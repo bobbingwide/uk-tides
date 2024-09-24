@@ -2,10 +2,10 @@
 ![banner](assets/uk-tides-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
-* Tags: block, shortcode, tides, UK, heights, times
+* Tags: block, shortcode, tide-times, UK, heights
 * Requires at least: 5.0
-* Tested up to: 6.6.1
-* Stable tag: 3.3.0
+* Tested up to: 6.6.2
+* Stable tag: 3.3.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Gutenberg compatible: Yes
@@ -94,14 +94,14 @@ If you want to read more about the oik plugins then please visit the
 3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
-# 3.3.0 
-Update for support for PHP 8.3.
+# 3.3.1 
+Update for
 
 ## Changelog 
-# 3.3.0 
-* Changed: Updated wp-scripts #23
-* Changed: Rebuild port select list #18
-* Tested: With WordPress 6.6.1 and WordPress Multisite
+# 3.3.1 
+* Changed: Updated wp-scripts #29
+* Changed: Remove dependency on bobbfunc's ep() #28
+* Tested: With WordPress 6.6.2 and WordPress Multisite
 * Tested: With Gutenberg 19.1.0
 * Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6
