@@ -1,0 +1,65 @@
+{
+  "apiVersion": 2,
+  "name": "uk-tides/uk-tides",
+  "title": "UK tides",
+  "category": "widgets",
+  "icon": "chart-bar",
+  "description": "Tide times and heights",
+  "attributes": {
+    "site": {
+      "type": "string"
+    },
+    "port": {
+      "type": "string",
+      "default": "chichester-harbour-entrance"
+    },
+    "textAlign": {
+      "type": "string"
+    },
+    "className": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "style": {
+      "type": "object"
+    },
+    "fontSize": {
+      "type": "string"
+    },
+    "gradient": {
+      "type": "string"
+    }
+  },
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": true,
+    "className": true,
+    "color": {
+      "gradients": true,
+      "text": true,
+      "background": true,
+      "link": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    }
+  },
+  "keywords": [
+    "UK",
+    "tides",
+    "times",
+    "heights",
+    "oik"
+  ],
+  "textdomain": "uk-tides",
+  "editorScript": "file:../../build/UK-tides.js",
+  "editorStyle": "file:../../build/UK-tides.css",
+  "style": "file:../../build/style-UK-tides.css"
+}
