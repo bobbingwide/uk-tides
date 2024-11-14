@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: block, shortcode, tide-times, UK, heights
 * Requires at least: 5.0
-* Tested up to: 6.6.2
-* Stable tag: 3.3.1
+* Tested up to: 6.7
+* Stable tag: 3.3.2
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Gutenberg compatible: Yes
@@ -94,14 +94,13 @@ If you want to read more about the oik plugins then please visit the
 3. Sample output for Portsmouth, Hants - from tidetimes.co.uk
 
 ## Upgrade Notice 
-# 3.3.1 
-Update for
+# 3.3.2 
+Update for the latest version of wp-scripts.
 
 ## Changelog 
-# 3.3.1 
+# 3.3.2 
 * Changed: Updated wp-scripts #29
-* Changed: Remove dependency on bobbfunc's ep() #28
-* Tested: With WordPress 6.6.2 and WordPress Multisite
-* Tested: With Gutenberg 19.1.0
+* Tested: With WordPress 6.7 and WordPress Multisite
+* Tested: With Gutenberg 19.6.1
 * Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6
