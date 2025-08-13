@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: block, shortcode, tide-times, UK, heights
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8.2
 Stable tag: 3.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
